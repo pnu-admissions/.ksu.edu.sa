@@ -39,7 +39,6 @@ function showInquiryForm() {
     document.getElementById("inquiry-phone").value = "";
     scrollToElement("forms-section");
 
-    // أزرار التحكم
     document.getElementById("inquiry-card").querySelector(".submit-btn").onclick = showInquiryForm;
     document.getElementById("confirmation-card").querySelector(".submit-btn").onclick = () => alert("يرجى البدء بالاستعلام عن القبول أولاً");
     document.getElementById("payment-card").querySelector(".submit-btn").onclick = () => alert("يرجى البدء بالاستعلام عن القبول أولاً");
@@ -89,7 +88,6 @@ function showAdmissionResult() {
     document.getElementById("payment-card").querySelector(".submit-btn").onclick = () => alert("يرجى تأكيد القبول أولاً");
 }
 
-// =================== تأكيد القبول ===================
 function showConfirmationSuccess() {
     hideAllForms();
     const resultsSection = document.getElementById("results-section");
@@ -150,12 +148,9 @@ function showPaymentInvoice() {
                         <input type="file" id="receipt-upload" accept=".pdf,.jpg,.png">
                         <div class="upload-icon">📄</div>
                         <p>اضغط هنا لرفع إيصال السداد</p>
-                        <p style="font-size: 14px; color: #999;">الملفات المدعومة: PDF, JPG, PNG (حد أقصى 5 ميجابايت)</p>
+                        <p style="font-size: 14px; color: #999;">الملفات المدعومة: PDF, JPG, PNG</p>
                         <p id="file-name" style="font-size: 16px; color: #00563F; font-weight: bold; margin-top: 10px;"></p>
                     </div>
-                    <div class="form-group"><label>رقم الحساب المحول منه</label><input type="text" id="from-account" required></div>
-                    <div class="form-group"><label>تاريخ العملية</label><input type="date" id="transfer-date" required></div>
-                    <div class="form-group"><label>اسم الشخص المحول</label><input type="text" id="transfer-name" required></div>
                     <button class="submit-btn mt-20" onclick="submitPayment()">إرسال إيصال السداد</button>
                 </div>
             </div>
@@ -165,7 +160,7 @@ function showPaymentInvoice() {
     scrollToElement("results-section");
 }
 
-// =================== عرض اسم الملف المرفوع ===================
+// عرض اسم الملف المرفوع
 function displayFileName() {
     const fileInput = document.getElementById("receipt-upload");
     const fileNameDisplay = document.getElementById("file-name");
@@ -176,37 +171,25 @@ function displayFileName() {
     }
 }
 
-// =================== إرسال إيصال السداد ===================
+// إرسال إيصال السداد إلى Google Apps Script
 function submitPayment() {
     const fileInput = document.getElementById("receipt-upload");
-    const fromAccount = document.getElementById("from-account").value;
-    const transferDate = document.getElementById("transfer-date").value;
-    const transferName = document.getElementById("transfer-name").value;
-
-    if (!fileInput.files[0] || !fromAccount || !transferDate || !transferName) {
-        alert("يرجى ملء جميع بيانات السداد ورفع الإيصال.");
+    if (!fileInput.files[0]) {
+        alert("يرجى رفع إيصال السداد أولاً");
         return;
     }
 
     const url = "https://script.google.com/macros/s/AKfycbxglQ_oGCF_ICL56X9dofD56F1mF89vIef6NrN7BObysCTEs5xQVfQ9wGc8N4aWwkG2/exec";
     const formData = new FormData();
-    formData.append("receipt", fileInput.files[0]);
-    formData.append("fromAccount", fromAccount);
-    formData.append("transferDate", transferDate);
-    formData.append("transferName", transferName);
+    formData.append("receiptFile", fileInput.files[0]);
     formData.append("studentName", currentStudent.name);
-    formData.append("total", currentStudent.fees.total);
-
     fetch(url, { method: 'POST', body: formData })
         .then(response => response.text())
-        .then(data => {
-            alert("تم إرسال إيصال السداد بنجاح!");
-            showPaymentInvoice(); // إعادة عرض الفاتورة بعد الإرسال
-        })
+        .then(data => alert("تم إرسال إيصال السداد بنجاح"))
         .catch(error => console.error("خطأ في الإرسال:", error));
 }
 
-// =================== نموذج تقديم طلب جديد ===================
+// =================== نموذج تقديم طلب جديد متعدد الأقسام ===================
 function showApplicationForm() {
     hideAllForms();
     document.getElementById("forms-section").classList.remove("hidden");
@@ -220,54 +203,77 @@ function showApplicationForm() {
     }
 
     formContainer.innerHTML = `
-        <h3>نموذج تقديم طلب جديد</h3>
+        <h3>نموذج تقديم طلب جديد - جامعة الملك سعود</h3>
         <form id="applicationForm" enctype="multipart/form-data">
-            <!-- البيانات الشخصية -->
-            <div class="form-group"><label>الاسم الكامل</label><input type="text" name="fullName" required></div>
-            <div class="form-group"><label>رقم الهوية / الإقامة</label><input type="text" name="idNumber" required></div>
-            <div class="form-group"><label>تاريخ الميلاد</label><input type="date" name="dob" required></div>
-            <div class="form-group"><label>الجنس</label>
-                <select name="gender" required>
-                    <option value="">اختر</option>
-                    <option>ذكر</option>
-                    <option>أنثى</option>
-                </select>
-            </div>
-            <div class="form-group"><label>الجنسية</label><input type="text" name="nationality" required></div>
-            <div class="form-group"><label>الدولة</label><input type="text" name="country" required></div>
-            <div class="form-group"><label>المدينة</label><input type="text" name="city" required></div>
-            <div class="form-group"><label>العنوان الكامل</label><input type="text" name="address" required></div>
+            <!-- القسم الأول: البيانات الشخصية -->
+            <fieldset>
+                <legend>البيانات الشخصية</legend>
+                <div class="form-group"><label>الاسم الكامل</label><input type="text" name="fullName" required></div>
+                <div class="form-group"><label>رقم الهوية / الإقامة</label><input type="text" name="idNumber" required></div>
+                <div class="form-group"><label>تاريخ الميلاد</label><input type="date" name="dob" required></div>
+                <div class="form-group"><label>الجنس</label>
+                    <select name="gender" required>
+                        <option value="">اختر</option>
+                        <option>ذكر</option>
+                        <option>أنثى</option>
+                    </select>
+                </div>
+                <div class="form-group"><label>الجنسية</label><input type="text" name="nationality" required></div>
+                <div class="form-group"><label>الدولة</label><input type="text" name="country" required></div>
+                <div class="form-group"><label>المدينة</label><input type="text" name="city" required></div>
+                <div class="form-group"><label>العنوان الكامل</label><input type="text" name="address" required></div>
+            </fieldset>
 
-            <!-- بيانات التواصل -->
-            <div class="form-group"><label>رقم الجوال</label><input type="text" name="phone" required></div>
-            <div class="form-group"><label>البريد الإلكتروني</label><input type="email" name="email" required></div>
-            <div class="form-group"><label>رقم جوال ولي الأمر (اختياري)</label><input type="text" name="parentPhone"></div>
+            <!-- القسم الثاني: بيانات التواصل -->
+            <fieldset>
+                <legend>بيانات التواصل</legend>
+                <div class="form-group"><label>رقم الجوال</label><input type="text" name="phone" required></div>
+                <div class="form-group"><label>البريد الإلكتروني</label><input type="email" name="email" required></div>
+                <div class="form-group"><label>رقم جوال ولي الأمر (اختياري)</label><input type="text" name="guardianPhone"></div>
+            </fieldset>
 
-            <!-- بيانات المؤهل الدراسي -->
-            <div class="form-group"><label>نوع المؤهل</label><input type="text" name="degreeType" required></div>
-            <div class="form-group"><label>سنة التخرج</label><input type="text" name="graduationYear" required></div>
-            <div class="form-group"><label>المعدل</label><input type="text" name="gpa" required></div>
-            <div class="form-group"><label>اسم المدرسة / الجامعة</label><input type="text" name="schoolName" required></div>
-            <div class="form-group"><label>تخصص المؤهل السابق (إن وجد)</label><input type="text" name="prevMajor"></div>
-            <div class="form-group"><label>سبب اختيار البرنامج</label><input type="text" name="reason" required></div>
+            <!-- القسم الثالث: بيانات المؤهل الدراسي -->
+            <fieldset>
+                <legend>بيانات المؤهل الدراسي</legend>
+                <div class="form-group"><label>نوع المؤهل</label><input type="text" name="degreeType" required></div>
+                <div class="form-group"><label>سنة التخرج</label><input type="text" name="graduationYear" required></div>
+                <div class="form-group"><label>المعدل</label><input type="text" name="gpa" required></div>
+                <div class="form-group"><label>اسم المدرسة / الجامعة</label><input type="text" name="schoolName" required></div>
+                <div class="form-group"><label>تخصص المؤهل السابق</label><input type="text" name="previousMajor"></div>
+                <div class="form-group"><label>سبب اختيار البرنامج</label><input type="text" name="reason" required></div>
+            </fieldset>
 
-            <!-- المرفقات -->
-            <div class="form-group"><label>صورة الهوية</label><input type="file" name="idFile" accept=".jpg,.jpeg,.png,.pdf" required></div>
-            <div class="form-group"><label>صورة الشهادة</label><input type="file" name="certificateFile" accept=".jpg,.jpeg,.png,.pdf" required></div>
-            <div class="form-group"><label>صورة شخصية (اختياري)</label><input type="file" name="photoFile" accept=".jpg,.jpeg,.png"></div>
+            <!-- القسم الرابع: المرفقات -->
+            <fieldset>
+                <legend>المرفقات</legend>
+                <div class="form-group"><label>صورة الهوية</label><input type="file" name="idFile" accept=".jpg,.jpeg,.png,.pdf" required></div>
+                <div class="form-group"><label>شهادة التخرج</label><input type="file" name="certificateFile" accept=".jpg,.jpeg,.png,.pdf" required></div>
+                <div class="form-group"><label>صورة شخصية (اختياري)</label><input type="file" name="photoFile" accept=".jpg,.jpeg,.png"></div>
+            </fieldset>
 
-            <!-- بيانات البرنامج المطلوب -->
-            <div class="form-group"><label>البرنامج المطلوب</label><input type="text" name="requestedProgram" required></div>
-            <div class="form-group"><label>نوع الدراسة</label>
-                <select name="studyType" required>
-                    <option value="">اختر</option>
-                    <option>انتظام</option>
-                    <option>انتساب</option>
-                    <option>مسائي</option>
-                </select>
-            </div>
-            <div class="form-group"><label>الرغبة الأولى</label><input type="text" name="firstChoice" required></div>
-            <div class="form-group"><label>الرغبة الثانية</label><input type="text" name="secondChoice"></div>
+            <!-- القسم الخامس: البرنامج المطلوب -->
+            <fieldset>
+                <legend>البرنامج المطلوب</legend>
+                <div class="form-group"><label>البرنامج المطلوب</label>
+                    <select name="program" required>
+                        <option value="">اختر البرنامج</option>
+                        <option>بكالوريوس</option>
+                        <option>ماجستير</option>
+                        <option>دكتوراه</option>
+                        <option>دبلوم عالي</option>
+                    </select>
+                </div>
+                <div class="form-group"><label>نوع الدراسة</label>
+                    <select name="studyType" required>
+                        <option value="">اختر</option>
+                        <option>انتظام</option>
+                        <option>انتساب</option>
+                        <option>مسائي</option>
+                    </select>
+                </div>
+                <div class="form-group"><label>الرغبة الأولى</label><input type="text" name="firstChoice" required></div>
+                <div class="form-group"><label>الرغبة الثانية</label><input type="text" name="secondChoice"></div>
+            </fieldset>
 
             <button type="submit" class="submit-btn">إرسال الطلب</button>
         </form>
@@ -275,27 +281,27 @@ function showApplicationForm() {
             تم استلام جميع بياناتك بنجاح. سيتم التواصل معك لإعطائك الرقم الجامعي.
         </div>
     `;
+
     formContainer.classList.remove("hidden");
     scrollToElement("forms-section");
 
+    // إرسال البيانات إلى Google Apps Script
     const applicationForm = document.getElementById("applicationForm");
     applicationForm.addEventListener("submit", function(e) {
         e.preventDefault();
-        document.getElementById("successMessage").classList.remove("hidden");
-
-        // إرسال البيانات إلى Google Apps Script
         const url = "https://script.google.com/macros/s/AKfycbxglQ_oGCF_ICL56X9dofD56F1mF89vIef6NrN7BObysCTEs5xQVfQ9wGc8N4aWwkG2/exec";
         const formData = new FormData(applicationForm);
         fetch(url, { method: 'POST', body: formData })
             .then(response => response.text())
-            .then(data => console.log("تم الإرسال بنجاح:", data))
+            .then(data => {
+                document.getElementById("successMessage").classList.remove("hidden");
+                applicationForm.reset();
+            })
             .catch(error => console.error("خطأ في الإرسال:", error));
-
-        this.reset();
     });
 }
 
-// =================== تهيئة الصفحة ===================
+// =================== التهيئة ===================
 document.addEventListener("DOMContentLoaded", () => {
     hideAllForms();
 });
