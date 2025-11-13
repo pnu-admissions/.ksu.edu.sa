@@ -1,163 +1,222 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بوابة القبول والتسجيل - جامعة الملك سعود</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>بوابة القبول والتسجيل - جامعة الملك سعود</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 <header>
-    <div class="container">
-        <div class="logo">
-            <img src="logo.png" alt="شعار جامعة الملك سعود">
-            <div class="logo-text">
-                <h1>جامعة الملك سعود</h1>
-                <p>بوابة القبول والتسجيل</p>
-            </div>
+<div class="container">
+    <div class="logo">
+        <img src="logo.png" alt="شعار جامعة الملك سعود">
+        <div class="logo-text">
+            <h1>جامعة الملك سعود</h1>
+            <p>بوابة القبول والتسجيل</p>
         </div>
-        <nav>
-            <ul>
-                <li><a href="#home">الرئيسية</a></li>
-                <li><a href="#services">الخدمات</a></li>
-                <li><a href="#contact">اتصل بنا</a></li>
-            </ul>
-        </nav>
     </div>
+    <nav>
+        <ul>
+            <li><a href="#home">الرئيسية</a></li>
+            <li><a href="#services">الخدمات</a></li>
+            <li><a href="#contact">اتصل بنا</a></li>
+        </ul>
+    </nav>
+</div>
 </header>
 
 <div id="home"></div>
 
 <section id="hero" class="hero-section">
-    <div class="container">
-        <h2>مرحباً بك في بوابة القبول والتسجيل</h2>
-        <p>جامعة الملك سعود - نحو مستقبل أكاديمي مشرق</p>
-    </div>
+<div class="container">
+<h2>مرحباً بك في بوابة القبول والتسجيل</h2>
+<p>جامعة الملك سعود - نحو مستقبل أكاديمي مشرق</p>
+</div>
 </section>
 
 <section id="services" class="services-section">
-    <div class="container">
-        <h2 class="text-center">خدمات القبول والتسجيل</h2>
-        <div class="service-cards">
-            <div class="service-card">
-                <div class="icon"><i class="fas fa-search"></i></div>
-                <h3>الاستعلام عن القبول</h3>
-                <p>استعلم عن حالة قبولك في الجامعة باستخدام رقم الهوية ورقم الجوال</p>
-                <button class="submit-btn" onclick="showForm('inquiry')">استعلام</button>
-            </div>
+<div class="container">
+<h2 class="text-center">خدمات القبول والتسجيل</h2>
+<div class="service-cards">
 
-            <div class="service-card">
-                <div class="icon"><i class="fas fa-user-plus"></i></div>
-                <h3>تقديم طلب جديد</h3>
-                <p>املأ النموذج بالكامل لتقديم طلبك للجامعة</p>
-                <button class="submit-btn" onclick="showForm('newApplication')">تقديم طلب جديد</button>
-            </div>
-
-            <div class="service-card">
-                <div class="icon"><i class="fas fa-check-circle"></i></div>
-                <h3>تأكيد القبول</h3>
-                <p>أكد قبولك في الجامعة وابدأ رحلتك الأكاديمية معنا</p>
-                <button class="submit-btn" onclick="alert('يرجى البدء بالاستعلام عن القبول أولاً')">تأكيد</button>
-            </div>
-        </div>
+    <div class="service-card">
+        <div class="icon"><i class="fas fa-search"></i></div>
+        <h3>الاستعلام عن القبول</h3>
+        <p>استعلم عن حالة قبولك في الجامعة باستخدام رقم الهوية ورقم الجوال</p>
+        <button class="submit-btn" onclick="showForm('inquiry')">استعلام</button>
     </div>
+
+    <div class="service-card">
+        <div class="icon"><i class="fas fa-user-plus"></i></div>
+        <h3>تقديم طلب جديد</h3>
+        <p>املأ النموذج بالكامل لتقديم طلبك للجامعة</p>
+        <button class="submit-btn" onclick="showForm('newApplication')">تقديم طلب جديد</button>
+    </div>
+
+    <div class="service-card">
+        <div class="icon"><i class="fas fa-credit-card"></i></div>
+        <h3>سداد الرسوم</h3>
+        <p>ادفع رسوم التسجيل بطريقة آمنة ومريحة</p>
+        <button class="submit-btn" onclick="alert('يرجى البدء بالاستعلام عن القبول أولاً')">سداد</button>
+    </div>
+
+    <div class="service-card">
+        <div class="icon"><i class="fas fa-check-circle"></i></div>
+        <h3>تأكيد القبول</h3>
+        <p>أكد قبولك في الجامعة وابدأ رحلتك الأكاديمية معنا</p>
+        <button class="submit-btn" onclick="alert('يرجى البدء بالاستعلام عن القبول أولاً')">تأكيد</button>
+    </div>
+
+</div>
+</div>
 </section>
 
 <section id="forms-section" class="forms-section">
-    <div class="container">
-        <!-- نموذج الاستعلام -->
-        <div id="inquiryForm" class="form-container hidden">
-            <h3>الاستعلام عن القبول</h3>
-            <form onsubmit="event.preventDefault(); alert('تم إرسال بيانات الاستعلام');">
-                <div class="form-group">
-                    <label>رقم الهوية</label>
-                    <input type="text" placeholder="أدخل رقم الهوية" required>
-                </div>
-                <div class="form-group">
-                    <label>رقم الجوال</label>
-                    <input type="text" placeholder="أدخل رقم الجوال" required>
-                </div>
-                <button type="submit" class="submit-btn">استعلام</button>
-            </form>
-        </div>
+<div class="container">
 
-        <!-- نموذج تقديم طلب جديد -->
-        <div id="newApplicationForm" class="form-container hidden">
-            <h3>نموذج تقديم طلب جديد</h3>
-            <form onsubmit="event.preventDefault(); alert('تم إرسال طلبك بنجاح');">
-                <div class="form-group">
-                    <label>الاسم الكامل</label>
-                    <input type="text" placeholder="أدخل الاسم الكامل" required>
-                </div>
-                <div class="form-group">
-                    <label>رقم الهوية / الإقامة</label>
-                    <input type="text" placeholder="أدخل رقم الهوية أو الإقامة" required>
-                </div>
-                <div class="form-group">
-                    <label>تاريخ الميلاد</label>
-                    <input type="date" required>
-                </div>
-                <div class="form-group">
-                    <label>البريد الإلكتروني</label>
-                    <input type="email" placeholder="example@mail.com" required>
-                </div>
-                <div class="form-group">
-                    <label>رقم الجوال</label>
-                    <input type="text" placeholder="أدخل رقم الجوال" required>
-                </div>
-                <div class="form-group">
-                    <label>العنوان</label>
-                    <input type="text" placeholder="أدخل العنوان الكامل" required>
-                </div>
-                <div class="form-group">
-                    <label>البرنامج الدراسي المطلوب</label>
-                    <select required>
-                        <option value="">اختر البرنامج</option>
-                        <option>البكالوريوس</option>
-                        <option>الماجستير</option>
-                        <option>الدكتوراه</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>التخصص المطلوب</label>
-                    <input type="text" placeholder="أدخل التخصص المطلوب" required>
-                </div>
-                <div class="form-group">
-                    <label>الحالة الاجتماعية</label>
-                    <select required>
-                        <option value="">اختر الحالة</option>
-                        <option>أعزب/عزباء</option>
-                        <option>متزوج/متزوجة</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>الجنسية</label>
-                    <input type="text" placeholder="أدخل الجنسية" required>
-                </div>
-                <div class="form-group">
-                    <label>المدينة</label>
-                    <input type="text" placeholder="أدخل المدينة" required>
-                </div>
-                <button type="submit" class="submit-btn">إرسال الطلب</button>
-            </form>
-        </div>
-    </div>
+<!-- نموذج الاستعلام -->
+<div id="inquiryForm" class="form-container hidden">
+<h3>الاستعلام عن القبول</h3>
+<form onsubmit="event.preventDefault(); alert('تم إرسال بيانات الاستعلام');">
+<div class="form-group">
+<label>رقم الهوية</label>
+<input type="text" placeholder="أدخل رقم الهوية" required>
+</div>
+<div class="form-group">
+<label>رقم الجوال</label>
+<input type="text" placeholder="أدخل رقم الجوال" required>
+</div>
+<button type="submit" class="submit-btn">استعلام</button>
+</form>
+</div>
+
+<!-- نموذج تقديم طلب جديد -->
+<div id="newApplicationForm" class="form-container hidden">
+<h3>نموذج تقديم طلب جديد</h3>
+<form onsubmit="event.preventDefault(); alert('تم إرسال طلبك بنجاح');">
+
+<div class="form-group">
+<label>الاسم الكامل</label>
+<input type="text" placeholder="أدخل الاسم الكامل" required>
+</div>
+
+<div class="form-group">
+<label>رقم الهوية / الإقامة</label>
+<input type="text" placeholder="أدخل رقم الهوية أو الإقامة" required>
+</div>
+
+<div class="form-group">
+<label>تاريخ الميلاد</label>
+<input type="date" required>
+</div>
+
+<div class="form-group">
+<label>البريد الإلكتروني</label>
+<input type="email" placeholder="example@mail.com" required>
+</div>
+
+<div class="form-group">
+<label>رقم الجوال</label>
+<input type="text" placeholder="أدخل رقم الجوال" required>
+</div>
+
+<div class="form-group">
+<label>رقم جوال للطوارئ</label>
+<input type="text" placeholder="أدخل رقم الطوارئ" required>
+</div>
+
+<div class="form-group">
+<label>البريد الإلكتروني البديل</label>
+<input type="email" placeholder="example2@mail.com" required>
+</div>
+
+<div class="form-group">
+<label>العنوان</label>
+<input type="text" placeholder="أدخل العنوان الكامل" required>
+</div>
+
+<div class="form-group">
+<label>البرنامج الدراسي المطلوب</label>
+<select required>
+<option value="">اختر البرنامج</option>
+<option>البكالوريوس</option>
+<option>الماجستير</option>
+<option>الدكتوراه</option>
+</select>
+</div>
+
+<div class="form-group">
+<label>التخصص المطلوب</label>
+<input type="text" placeholder="أدخل التخصص المطلوب" required>
+</div>
+
+<div class="form-group">
+<label>الدرجة العلمية السابقة</label>
+<input type="text" placeholder="أدخل الدرجة العلمية السابقة" required>
+</div>
+
+<div class="form-group">
+<label>اسم المدرسة/الجامعة السابقة</label>
+<input type="text" placeholder="أدخل اسم المدرسة أو الجامعة السابقة" required>
+</div>
+
+<div class="form-group">
+<label>المعدل النهائي</label>
+<input type="text" placeholder="أدخل المعدل النهائي" required>
+</div>
+
+<div class="form-group">
+<label>الحالة الاجتماعية</label>
+<select required>
+<option value="">اختر الحالة</option>
+<option>أعزب/عزباء</option>
+<option>متزوج/متزوجة</option>
+</select>
+</div>
+
+<div class="form-group">
+<label>الجنسية</label>
+<input type="text" placeholder="أدخل الجنسية" required>
+</div>
+
+<div class="form-group">
+<label>المدينة</label>
+<input type="text" placeholder="أدخل المدينة" required>
+</div>
+
+<div class="form-group">
+<label>اللغة الأم</label>
+<input type="text" placeholder="أدخل اللغة الأم" required>
+</div>
+
+<div class="form-group">
+<label>هل لديك أي إعاقات أو احتياجات خاصة؟</label>
+<select required>
+<option value="">اختر</option>
+<option>نعم</option>
+<option>لا</option>
+</select>
+</div>
+
+<button type="submit" class="submit-btn">إرسال الطلب</button>
+</form>
+</div>
+
+</div>
 </section>
 
 <footer>
-    <div class="container">
-        <p>&copy; 2025 جامعة الملك سعود - جميع الحقوق محفوظة</p>
-    </div>
+<div class="container">
+<p>&copy; 2025 جامعة الملك سعود - جميع الحقوق محفوظة</p>
+</div>
 </footer>
 
 <script>
 function showForm(type){
-    // اخفاء كل النماذج أولاً
     document.querySelectorAll('.form-container').forEach(f => f.classList.add('hidden'));
-    
-    // اظهار النموذج المطلوب
     if(type === 'inquiry') {
         document.getElementById('inquiryForm').classList.remove('hidden');
         window.scrollTo({ top: document.getElementById('inquiryForm').offsetTop, behavior: 'smooth' });
