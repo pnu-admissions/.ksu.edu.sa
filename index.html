@@ -29,8 +29,8 @@
         </div>
     </header>
 
+    <!-- Add anchor for home section to enable smooth scrolling and correct navigation -->
     <div id="home"></div>
-
     <!-- Hero Section -->
     <section id="hero" class="hero-section">
         <div class="container">
@@ -45,29 +45,27 @@
             <h2 class="text-center">خدمات القبول والتسجيل</h2>
             <div class="service-cards">
                 <div id="inquiry-card" class="service-card">
-                    <div class="icon"><i class="fas fa-search"></i></div>
+                    <div class="icon">
+                        <i class="fas fa-search"></i>
+                    </div>
                     <h3>الاستعلام عن القبول</h3>
                     <p>استعلم عن حالة قبولك في الجامعة باستخدام رقم الهوية ورقم الجوال</p>
                     <button class="submit-btn" onclick="showInquiryForm()">استعلام</button>
                 </div>
                 
-                <!-- زر تقديم طلب جديد -->
-                <div id="application-card" class="service-card">
-                    <div class="icon"><i class="fas fa-user-plus"></i></div>
-                    <h3>تقديم طلب جديد</h3>
-                    <p>املأ النموذج بالكامل لتقديم طلبك للجامعة</p>
-                    <button class="submit-btn" onclick="showApplicationForm()">تقديم طلب جديد</button>
-                </div>
-
                 <div id="confirmation-card" class="service-card">
-                    <div class="icon"><i class="fas fa-check-circle"></i></div>
+                    <div class="icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
                     <h3>تأكيد القبول</h3>
                     <p>أكد قبولك في الجامعة وابدأ رحلتك الأكاديمية معنا</p>
                     <button class="submit-btn" onclick="alert('يرجى البدء بالاستعلام عن القبول أولاً')">تأكيد</button>
                 </div>
                 
                 <div id="payment-card" class="service-card">
-                    <div class="icon"><i class="fas fa-credit-card"></i></div>
+                    <div class="icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
                     <h3>سداد الرسوم</h3>
                     <p>ادفع رسوم التسجيل والدراسة بطريقة آمنة ومريحة</p>
                     <button class="submit-btn" onclick="alert('يرجى البدء بالاستعلام عن القبول أولاً')">سداد</button>
@@ -94,64 +92,13 @@
                     <button type="submit" class="submit-btn">استعلام</button>
                 </form>
             </div>
+        </div>
+    </section>
 
-            <!-- Application Form -->
-            <div id="application-form" class="form-container hidden">
-                <h3>نموذج تقديم طلب جديد</h3>
-                <form id="newApplicationForm" enctype="multipart/form-data">
-                    <div class="form-group">
-                        <label>الاسم الكامل</label>
-                        <input type="text" name="fullName" placeholder="أدخل الاسم الكامل" required>
-                    </div>
-                    <div class="form-group">
-                        <label>رقم الهوية / الإقامة</label>
-                        <input type="text" name="idNumber" placeholder="أدخل رقم الهوية أو الإقامة" required>
-                    </div>
-                    <div class="form-group">
-                        <label>تاريخ الميلاد</label>
-                        <input type="date" name="dob" required>
-                    </div>
-                    <div class="form-group">
-                        <label>البريد الإلكتروني</label>
-                        <input type="email" name="email" placeholder="example@mail.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label>رقم الجوال</label>
-                        <input type="text" name="phone" placeholder="أدخل رقم الجوال" required>
-                    </div>
-                    <div class="form-group">
-                        <label>البرنامج الدراسي المطلوب</label>
-                        <select name="program" required>
-                            <option value="">اختر البرنامج</option>
-                            <option>البكالوريوس</option>
-                            <option>الماجستير</option>
-                            <option>الدكتوراه</option>
-                            <option>الدبلوم العالي</option>
-                            <option>التعليم عن بعد</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>التخصص المطلوب</label>
-                        <input type="text" name="major" placeholder="أدخل التخصص المطلوب" required>
-                    </div>
-                    <div class="form-group">
-                        <label>المعدل النهائي</label>
-                        <input type="text" name="gpa" placeholder="أدخل المعدل النهائي" required>
-                    </div>
-                    <div class="form-group">
-                        <label>رفع صورة الشهادة</label>
-                        <input type="file" name="certificateFile" accept=".jpg,.jpeg,.png,.pdf" required>
-                    </div>
-                    <div class="form-group">
-                        <label>رفع صورة الهوية</label>
-                        <input type="file" name="idFile" accept=".jpg,.jpeg,.png,.pdf" required>
-                    </div>
-                    <button type="submit" class="submit-btn">إرسال الطلب</button>
-                </form>
-                <div id="successMessage" class="hidden" style="margin-top:15px; padding:10px; background:#d4edda; color:#155724; border-radius:5px;">
-                    تم استلام جميع بياناتك بنجاح. سيتم التواصل معك عبر الرابط المحدد لإعطائك الرقم الجامعي.
-                </div>
-            </div>
+    <!-- Results Section -->
+    <section id="results-section" class="results-section hidden">
+        <div class="container">
+            <!-- Results will be dynamically inserted here -->
         </div>
     </section>
 
@@ -162,35 +109,7 @@
         </div>
     </footer>
 
-    <script>
-        function showInquiryForm() {
-            document.getElementById('forms-section').classList.remove('hidden');
-            document.getElementById('inquiry-form').classList.remove('hidden');
-            document.getElementById('application-form').classList.add('hidden');
-        }
-
-        function showApplicationForm() {
-            document.getElementById('forms-section').classList.remove('hidden');
-            document.getElementById('application-form').classList.remove('hidden');
-            document.getElementById('inquiry-form').classList.add('hidden');
-        }
-
-        // إرسال النموذج إلى Google Apps Script
-        document.getElementById('newApplicationForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const formData = new FormData(this);
-            fetch('https://script.google.com/macros/s/AKfycbxglQ_oGCF_ICL56X9dofD56F1mF89vIef6NrN7BObysCTEs5xQVfQ9wGc8N4aWwkG2/exec', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.text())
-            .then(data => {
-                this.reset();
-                document.getElementById('successMessage').classList.remove('hidden');
-                console.log('تم إرسال النموذج بنجاح');
-            })
-            .catch(error => console.error('خطأ في الإرسال:', error));
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
+
