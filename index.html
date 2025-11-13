@@ -96,81 +96,83 @@
 <!-- نموذج تقديم طلب جديد -->
 <div id="newApplicationForm" class="form-container hidden">
 <h3>نموذج تقديم طلب جديد</h3>
-<form onsubmit="event.preventDefault(); alert('تم إرسال طلبك بنجاح');">
+<form id="applicationForm">
 
 <div class="form-group">
 <label>الاسم الكامل</label>
-<input type="text" placeholder="أدخل الاسم الكامل" required>
+<input type="text" name="fullName" placeholder="أدخل الاسم الكامل" required>
 </div>
 
 <div class="form-group">
 <label>رقم الهوية / الإقامة</label>
-<input type="text" placeholder="أدخل رقم الهوية أو الإقامة" required>
+<input type="text" name="idNumber" placeholder="أدخل رقم الهوية أو الإقامة" required>
 </div>
 
 <div class="form-group">
 <label>تاريخ الميلاد</label>
-<input type="date" required>
+<input type="date" name="dob" required>
 </div>
 
 <div class="form-group">
 <label>البريد الإلكتروني</label>
-<input type="email" placeholder="example@mail.com" required>
+<input type="email" name="email" placeholder="example@mail.com" required>
 </div>
 
 <div class="form-group">
 <label>رقم الجوال</label>
-<input type="text" placeholder="أدخل رقم الجوال" required>
+<input type="text" name="phone" placeholder="أدخل رقم الجوال" required>
 </div>
 
 <div class="form-group">
 <label>رقم جوال للطوارئ</label>
-<input type="text" placeholder="أدخل رقم الطوارئ" required>
+<input type="text" name="emergencyPhone" placeholder="أدخل رقم الطوارئ" required>
 </div>
 
 <div class="form-group">
 <label>البريد الإلكتروني البديل</label>
-<input type="email" placeholder="example2@mail.com" required>
+<input type="email" name="alternateEmail" placeholder="example2@mail.com" required>
 </div>
 
 <div class="form-group">
 <label>العنوان</label>
-<input type="text" placeholder="أدخل العنوان الكامل" required>
+<input type="text" name="address" placeholder="أدخل العنوان الكامل" required>
 </div>
 
 <div class="form-group">
 <label>البرنامج الدراسي المطلوب</label>
-<select required>
+<select name="program" required>
 <option value="">اختر البرنامج</option>
 <option>البكالوريوس</option>
 <option>الماجستير</option>
 <option>الدكتوراه</option>
+<option>الدبلوم العالي</option>
+<option>التعليم عن بعد</option>
 </select>
 </div>
 
 <div class="form-group">
 <label>التخصص المطلوب</label>
-<input type="text" placeholder="أدخل التخصص المطلوب" required>
+<input type="text" name="major" placeholder="أدخل التخصص المطلوب" required>
 </div>
 
 <div class="form-group">
 <label>الدرجة العلمية السابقة</label>
-<input type="text" placeholder="أدخل الدرجة العلمية السابقة" required>
+<input type="text" name="previousDegree" placeholder="أدخل الدرجة العلمية السابقة" required>
 </div>
 
 <div class="form-group">
 <label>اسم المدرسة/الجامعة السابقة</label>
-<input type="text" placeholder="أدخل اسم المدرسة أو الجامعة السابقة" required>
+<input type="text" name="previousSchool" placeholder="أدخل اسم المدرسة أو الجامعة السابقة" required>
 </div>
 
 <div class="form-group">
 <label>المعدل النهائي</label>
-<input type="text" placeholder="أدخل المعدل النهائي" required>
+<input type="text" name="gpa" placeholder="أدخل المعدل النهائي" required>
 </div>
 
 <div class="form-group">
 <label>الحالة الاجتماعية</label>
-<select required>
+<select name="maritalStatus" required>
 <option value="">اختر الحالة</option>
 <option>أعزب/عزباء</option>
 <option>متزوج/متزوجة</option>
@@ -179,22 +181,22 @@
 
 <div class="form-group">
 <label>الجنسية</label>
-<input type="text" placeholder="أدخل الجنسية" required>
+<input type="text" name="nationality" placeholder="أدخل الجنسية" required>
 </div>
 
 <div class="form-group">
 <label>المدينة</label>
-<input type="text" placeholder="أدخل المدينة" required>
+<input type="text" name="city" placeholder="أدخل المدينة" required>
 </div>
 
 <div class="form-group">
 <label>اللغة الأم</label>
-<input type="text" placeholder="أدخل اللغة الأم" required>
+<input type="text" name="nativeLanguage" placeholder="أدخل اللغة الأم" required>
 </div>
 
 <div class="form-group">
 <label>هل لديك أي إعاقات أو احتياجات خاصة؟</label>
-<select required>
+<select name="disabilities" required>
 <option value="">اختر</option>
 <option>نعم</option>
 <option>لا</option>
@@ -203,6 +205,9 @@
 
 <button type="submit" class="submit-btn">إرسال الطلب</button>
 </form>
+<div id="successMessage" class="hidden" style="margin-top:15px; padding:10px; background:#d4edda; color:#155724; border-radius:5px;">
+تم استلام جميع بياناتك بنجاح. سيتم التواصل معك عبر الواتساب أو البريد الإلكتروني لإعطائك الرقم الجامعي.
+</div>
 </div>
 
 </div>
@@ -226,6 +231,17 @@ function showForm(type){
         window.scrollTo({ top: document.getElementById('newApplicationForm').offsetTop, behavior: 'smooth' });
     }
 }
+
+document.getElementById('applicationForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    // إرسال البيانات للبريد الذي سبق وأرسلته
+    // مثال: يمكن استخدام خدمة PHP أو API هنا
+    console.log('بيانات الطالب:', new FormData(this)); 
+
+    // إظهار رسالة النجاح وإخفاء النموذج
+    this.classList.add('hidden');
+    document.getElementById('successMessage').classList.remove('hidden');
+});
 </script>
 </body>
 </html>
