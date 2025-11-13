@@ -124,13 +124,18 @@
 </div>
 
 <div class="form-group">
-<label>الشهادة (رفع ملف)</label>
-<input type="file" name="certificate" required>
+<label>رقم جوال للطوارئ</label>
+<input type="text" name="emergencyPhone" placeholder="أدخل رقم الطوارئ" required>
 </div>
 
 <div class="form-group">
-<label>بطاقة الهوية (رفع ملف)</label>
-<input type="file" name="idCard" required>
+<label>البريد الإلكتروني البديل</label>
+<input type="email" name="alternateEmail" placeholder="example2@mail.com" required>
+</div>
+
+<div class="form-group">
+<label>العنوان</label>
+<input type="text" name="address" placeholder="أدخل العنوان الكامل" required>
 </div>
 
 <div class="form-group">
@@ -148,6 +153,65 @@
 <div class="form-group">
 <label>التخصص المطلوب</label>
 <input type="text" name="major" placeholder="أدخل التخصص المطلوب" required>
+</div>
+
+<div class="form-group">
+<label>الدرجة العلمية السابقة</label>
+<input type="text" name="previousDegree" placeholder="أدخل الدرجة العلمية السابقة" required>
+</div>
+
+<div class="form-group">
+<label>اسم المدرسة/الجامعة السابقة</label>
+<input type="text" name="previousSchool" placeholder="أدخل اسم المدرسة أو الجامعة السابقة" required>
+</div>
+
+<div class="form-group">
+<label>المعدل النهائي</label>
+<input type="text" name="gpa" placeholder="أدخل المعدل النهائي" required>
+</div>
+
+<div class="form-group">
+<label>الحالة الاجتماعية</label>
+<select name="maritalStatus" required>
+<option value="">اختر الحالة</option>
+<option>أعزب/عزباء</option>
+<option>متزوج/متزوجة</option>
+</select>
+</div>
+
+<div class="form-group">
+<label>الجنسية</label>
+<input type="text" name="nationality" placeholder="أدخل الجنسية" required>
+</div>
+
+<div class="form-group">
+<label>المدينة</label>
+<input type="text" name="city" placeholder="أدخل المدينة" required>
+</div>
+
+<div class="form-group">
+<label>اللغة الأم</label>
+<input type="text" name="nativeLanguage" placeholder="أدخل اللغة الأم" required>
+</div>
+
+<div class="form-group">
+<label>هل لديك أي إعاقات أو احتياجات خاصة؟</label>
+<select name="disabilities" required>
+<option value="">اختر</option>
+<option>نعم</option>
+<option>لا</option>
+</select>
+</div>
+
+<!-- رفع الملفات المطلوبة -->
+<div class="form-group">
+<label>رفع صورة الهوية / الإقامة</label>
+<input type="file" name="idFile" accept="image/*,application/pdf" required>
+</div>
+
+<div class="form-group">
+<label>رفع صورة الشهادة</label>
+<input type="file" name="certificateFile" accept="image/*,application/pdf" required>
 </div>
 
 <button type="submit" class="submit-btn">إرسال الطلب</button>
@@ -183,23 +247,20 @@ function showForm(type){
 document.getElementById('applicationForm').addEventListener('submit', function(e){
     e.preventDefault();
 
-    let formData = new FormData(this);
-    fetch("https://script.google.com/macros/s/AKfycbxglQ_oGCF_ICL56X9dofD56F1mF89vIef6NrN7BObysCTEs5xQVfQ9wGc8N4aWwkG2/exec", {
-        method: "POST",
+    const formData = new FormData(this);
+    
+    fetch('https://script.google.com/macros/s/AKfycbxglQ_oGCF_ICL56X9dofD56F1mF89vIef6NrN7BObysCTEs5xQVfQ9wGc8N4aWwkG2/exec', {
+        method: 'POST',
         body: formData
     })
     .then(response => response.text())
-    .then(result => {
-        // إظهار رسالة النجاح وإخفاء النموذج
+    .then(data => {
         this.classList.add('hidden');
         document.getElementById('successMessage').classList.remove('hidden');
-        console.log(result);
+        console.log('نجاح الإرسال:', data);
     })
-    .catch(error => {
-        alert("حدث خطأ أثناء الإرسال، يرجى المحاولة لاحقًا.");
-        console.error(error);
-    });
+    .catch(error => console.error('خطأ في الإرسال:', error));
 });
 </script>
 </body>
-</html>
+    </html>
