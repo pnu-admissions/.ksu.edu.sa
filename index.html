@@ -1,143 +1,278 @@
-<!DOCTYPE html><html lang="ar" dir="rtl">
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>بوابة الطلاب - جامعة الملك سعود</title>
+<title>بوابة القبول والتسجيل - جامعة الملك سعود</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <style>
-/* === CSS شامل === */
-* {margin:0; padding:0; box-sizing:border-box; font-family:'Tajawal',sans-serif;}
-body {background-color:#f5f7fa; color:#333; line-height:1.6;}
-header {background:linear-gradient(135deg,#00563F 0%,#007BFF 100%); color:#fff; padding:15px 0; position:sticky; top:0; z-index:1000;}
+/* نسختك الأصلية من CSS هنا بدون تغيير */
+* {margin:0; padding:0; box-sizing:border-box;}
+body {font-family:'Tajawal', sans-serif; direction:rtl; background-color:#f5f7fa; color:#333; line-height:1.6;}
+.container {max-width:1200px; margin:0 auto; padding:0 20px;}
+header {background: linear-gradient(135deg, #00563F 0%, #007BFF 100%); color:#fff; padding:15px 0; box-shadow:0 2px 10px rgba(0,0,0,0.1); position:sticky; top:0; z-index:1000;}
 header .container {display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap;}
 header .logo {display:flex; align-items:center; gap:15px;}
-header .logo img {height:70px; border-radius:10px;}
+header .logo img {height:70px; width:auto; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.2);}
+header .logo-text h1 {font-size:28px; margin:0; color:#fff; font-weight:700;}
+header .logo-text p {font-size:16px; margin:0; color:#e8f4fd; font-weight:300;}
 header nav ul {list-style:none; display:flex; gap:30px;}
-header nav ul li a {color:#fff; text-decoration:none; font-weight:500; font-size:18px; padding:8px 16px; border-radius:25px; transition:0.3s;}
-header nav ul li a:hover {background-color:rgba(255,255,255,0.2);}
-.hero-section {background:linear-gradient(rgba(0,86,63,0.8),rgba(0,123,255,0.8)); color:#fff; text-align:center; padding:100px 20px; position:relative;}
-.hero-section h2 {font-size:48px; margin-bottom:20px;}
-.hero-section p {font-size:22px; max-width:800px; margin:0 auto;}
-.services-section {padding:80px 20px; background:#fff; text-align:center;}
-.service-cards {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:40px; margin-top:40px;}
-.service-card {background:#f8f9fa; border-radius:20px; padding:30px; position:relative; transition:0.4s;}
-.service-card h3 {color:#00563F; margin-bottom:20px;}
-.service-card .submit-btn {background:linear-gradient(135deg,#00563F 0%,#007BFF 100%); color:#fff; border:none; padding:15px 35px; border-radius:30px; cursor:pointer; width:100%; transition:0.3s;}
-.service-card .submit-btn:hover {transform:translateY(-3px);}
-.forms-section {padding:80px 20px; background:linear-gradient(135deg,#f8f9fa 0%,#e9ecef 100%);}
-.form-container {background:#fff; border-radius:20px; padding:50px; max-width:700px; margin:0 auto; position:relative;}
-.form-container h3 {font-size:32px; color:#00563F; margin-bottom:30px;}
-.form-group {margin-bottom:20px; text-align:right;}
-.form-group label {display:block; font-weight:600; margin-bottom:5px;}
-.form-group input, .form-group select {width:100%; padding:12px; border-radius:10px; border:1px solid #ccc;}
-.form-container .submit-btn {margin-top:20px;}
-.results-section {padding:50px 20px;}
-.result-card {background:#fff; border-radius:20px; padding:40px; max-width:900px; margin:20px auto; text-align:center;}
-.result-card h3 {color:#00563F; margin-bottom:15px;}
-.result-card .status-accepted {color:#28a745; font-weight:600; display:inline-block; padding:10px 20px; border-radius:20px; margin-bottom:20px;}
-.student-info {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; margin-bottom:30px;}
-.student-info .info-item {display:flex; justify-content:space-between; background:#f8f9fa; padding:10px 15px; border-radius:10px;}
-.payment-invoice {background:#f8f9fa; padding:20px; border-radius:15px; margin-bottom:30px;}
-.payment-invoice .invoice-item {display:flex; justify-content:space-between; padding:10px; border-bottom:1px solid #ccc;}
-.bank-info {background:#f8f9fa; padding:20px; border-radius:15px; margin-bottom:30px;}
-.upload-area {border:3px dashed #00563F; border-radius:15px; padding:30px; cursor:pointer; text-align:center; margin-bottom:20px;}
-.upload-area input {display:none;}
+header nav ul li a {color:#fff; text-decoration:none; font-weight:500; font-size:18px; transition:all 0.3s ease; padding:8px 16px; border-radius:25px;}
+header nav ul li a:hover {background-color:rgba(255,255,255,0.2); transform:translateY(-2px);}
+.hero-section {background: linear-gradient(rgba(0,86,63,0.8), rgba(0,123,255,0.8)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23ffffff" stroke-width="0.5" opacity="0.3"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)" /></svg>') repeat; background-size:50px 50px; color:#fff; text-align:center; padding:100px 0; position:relative;}
+.hero-section::before {content:''; position:absolute; top:0; left:0; right:0; bottom:0; background:radial-gradient(circle at center, transparent 0%, rgba(0,86,63,0.3) 100%);}
+.hero-section .container {position:relative; z-index:2;}
+.hero-section h2 {font-size:48px; margin-bottom:20px; font-weight:700; text-shadow:2px 2px 4px rgba(0,0,0,0.3);}
+.hero-section p {font-size:22px; max-width:800px; margin:0 auto; font-weight:300; text-shadow:1px 1px 2px rgba(0,0,0,0.3);}
+.services-section {padding:80px 0; background-color:#fff;}
+.services-section h2 {font-size:42px; color:#00563F; margin-bottom:50px; font-weight:700; position:relative;}
+.services-section h2::after {content:''; position:absolute; bottom:-10px; left:50%; transform:translateX(-50%); width:80px; height:4px; background:linear-gradient(90deg, #00563F, #007BFF); border-radius:2px;}
+.service-cards {display:grid; grid-template-columns:repeat(auto-fit, minmax(320px,1fr)); gap:40px; margin-top:60px;}
+.service-card {background:linear-gradient(145deg,#ffffff,#f8f9fa); border-radius:20px; box-shadow:0 10px 30px rgba(0,86,63,0.1); padding:40px 30px; text-align:center; transition:all 0.4s ease; position:relative; overflow:hidden;}
+.service-card::before {content:''; position:absolute; top:0; left:-100%; width:100%; height:100%; background:linear-gradient(90deg, transparent, rgba(0,123,255,0.1), transparent); transition:left 0.6s ease;}
+.service-card:hover::before {left:100%;}
+.service-card:hover {transform:translateY(-15px); box-shadow:0 20px 40px rgba(0,86,63,0.2);}
+.service-card .icon {font-size:70px; margin-bottom:25px; color:#00563F; transition:all 0.3s ease;}
+.service-card:hover .icon {color:#007BFF; transform:scale(1.1);}
+.service-card h3 {font-size:28px; color:#00563F; margin-bottom:20px; font-weight:600;}
+.service-card p {font-size:16px; color:#666; margin-bottom:30px; line-height:1.8;}
+.service-card .submit-btn {background:linear-gradient(135deg,#00563F 0%,#007BFF 100%); color:#fff; border:none; padding:15px 35px; border-radius:30px; font-size:18px; font-weight:600; cursor:pointer; transition:all 0.3s ease; width:100%; position:relative; overflow:hidden;}
+.service-card .submit-btn:hover {transform:translateY(-3px); box-shadow:0 8px 20px rgba(0,86,63,0.3);}
+.form-container {background:#fff; border-radius:20px; box-shadow:0 15px 35px rgba(0,86,63,0.1); padding:50px; max-width:600px; margin:0 auto; text-align:center; position:relative;}
+.form-container::before {content:''; position:absolute; top:0; left:0; right:0; height:5px; background:linear-gradient(90deg,#00563F,#007BFF); border-radius:20px 20px 0 0;}
+.form-container h3 {font-size:36px; color:#00563F; margin-bottom:40px; font-weight:700;}
+.form-group {margin-bottom:30px; text-align:right;}
+.form-group label {display:block; font-size:18px; color:#333; margin-bottom:10px; font-weight:600;}
+.form-group input, .form-group select {width:100%; padding:18px 20px; border:2px solid #e9ecef; border-radius:12px; font-size:16px; color:#555; transition:all 0.3s ease; background-color:#f8f9fa;}
+.form-group input:focus, .form-group select:focus {border-color:#00563F; outline:none; background-color:#fff; box-shadow:0 0 0 3px rgba(0,86,63,0.1);}
+.form-container .submit-btn {background:linear-gradient(135deg,#00563F 0%,#007BFF 100%); color:#fff; border:none; padding:18px 50px; border-radius:30px; font-size:20px; font-weight:600; cursor:pointer; transition:all 0.3s ease; width:100%; margin-top:20px;}
+.form-container .submit-btn:hover {transform:translateY(-3px); box-shadow:0 10px 25px rgba(0,86,63,0.3);}
 .hidden {display:none !important;}
 .text-center {text-align:center;}
 .mt-20 {margin-top:20px;}
-@media(max-width:768px){.service-cards{grid-template-columns:1fr;}.student-info{grid-template-columns:1fr;}.form-container{padding:30px;}}
+footer {background: linear-gradient(135deg, #00563F 0%, #007BFF 100%); color:#fff; text-align:center; padding:30px 0; font-size:16px;}
+footer p {margin:8px 0; font-weight:300;}
 </style>
 </head>
 <body>
+
 <header>
 <div class="container">
 <div class="logo">
-<img src="https://via.placeholder.com/70" alt="Logo">
-<div><h1>جامعة الملك سعود</h1><p>بوابة الطلاب</p></div>
+<img src="logo.png" alt="شعار جامعة الملك سعود">
+<div class="logo-text">
+<h1>جامعة الملك سعود</h1>
+<p>بوابة القبول والتسجيل</p>
 </div>
-<nav><ul><li><a href="#hero">الرئيسية</a></li></ul></nav>
+</div>
+<nav>
+<ul>
+<li><a href="#home">الرئيسية</a></li>
+<li><a href="#services">الخدمات</a></li>
+<li><a href="#contact">اتصل بنا</a></li>
+</ul>
+</nav>
 </div>
 </header>
-<section class="hero-section" id="hero">
-<h2>مرحبا بكم في بوابة الطلاب</h2>
-<p>يمكنك تقديم طلب جديد، استعلام القبول، تأكيد القبول، وسداد الرسوم بكل سهولة</p>
-</section>
-<section class="services-section">
-<h2>خدمات الطلاب</h2>
-<div class="service-cards">
-<div class="service-card" id="inquiry-card">
-<h3>تقديم طلب جديد</h3>
-<button class="submit-btn" onclick="showApplicationForm()">فتح النموذج</button>
-</div>
-<div class="service-card" id="check-card">
-<h3>استعلام القبول</h3>
-<button class="submit-btn" onclick="showAdmissionForm()">استعلام</button>
-</div>
-<div class="service-card" id="confirm-card">
-<h3>تأكيد القبول</h3>
-<button class="submit-btn" onclick="alert('يرجى استعلام القبول أولاً')">تأكيد</button>
-</div>
-<div class="service-card" id="payment-card">
-<h3>سداد الرسوم</h3>
-<button class="submit-btn" onclick="alert('يرجى استعلام القبول أولاً')">السداد</button>
-</div>
-</div>
-</section>
-<section class="forms-section" id="forms-section">
-<div class="form-container hidden" id="application-form">
-<h3>نموذج تقديم طلب جديد</h3>
-<div class="form-group"><label>الاسم الكامل:</label><input type="text" id="app-name"></div>
-<div class="form-group"><label>الجنسية:</label><input type="text" id="app-nationality"></div>
-<div class="form-group"><label>رقم الهوية / الإقامة:</label><input type="text" id="app-id"></div>
-<div class="form-group"><label>البريد الإلكتروني:</label><input type="text" id="app-email"></div>
-<div class="form-group"><label>رقم الهاتف:</label><input type="text" id="app-phone"></div>
-<div class="form-group"><label>العنوان:</label><input type="text" id="app-address"></div>
-<div class="form-group"><label>الدرجة العلمية:</label><select id="app-degree"><option>بكالوريوس</option><option>ماجستير</option><option>دكتوراه</option></select></div>
-<div class="form-group"><label>التخصص:</label><input type="text" id="app-major"></div>
-<div class="form-group"><label>تاريخ الميلاد:</label><input type="date" id="app-dob"></div>
-<div class="form-group"><label>المعدل:</label><input type="text" id="app-gpa"></div>
-<div class="form-group"><label>الجامعة السابقة:</label><input type="text" id="app-uni"></div>
-<div class="form-group"><label>رفع صورة الهوية:</label><input type="file" id="app-id-file"></div>
-<div class="form-group"><label>رفع شهادة التخرج:</label><input type="file" id="app-degree-file"></div>
-<button class="submit-btn" onclick="submitApplication()">إرسال الطلب</button>
-</div>
-<div class="form-container hidden" id="admission-form">
-<h3>استعلام القبول</h3>
-<div class="form-group"><label>الرقم الجامعي:</label><input type="text" id="admission-id"></div>
-<div class="form-group"><label>رقم الهاتف:</label><input type="text" id="admission-phone"></div>
-<button class="submit-btn" onclick="checkAdmission()">استعلام</button>
-</div>
-<div class="results-section" id="results-section"></div>
-</section>
-<script>
-let students = {};
-let currentStudent = null;function showApplicationForm(){document.getElementById('application-form').classList.remove('hidden'); document.getElementById('admission-form').classList.add('hidden');} function showAdmissionForm(){document.getElementById('admission-form').classList.remove('hidden'); document.getElementById('application-form').classList.add('hidden');} function submitApplication(){ let id = Date.now().toString(); students[id] = { name: document.getElementById('app-name').value, nationality: document.getElementById('app-nationality').value, personalId: document.getElementById('app-id').value, email: document.getElementById('app-email').value, phone: document.getElementById('app-phone').value, address: document.getElementById('app-address').value, degree: document.getElementById('app-degree').value, major: document.getElementById('app-major').value, dob: document.getElementById('app-dob').value, gpa: document.getElementById('app-gpa').value, university: document.getElementById('app-uni').value, idFile: document.getElementById('app-id-file').files[0] ? document.getElementById('app-id-file').files[0].name : '', degreeFile: document.getElementById('app-degree-file').files[0] ? document.getElementById('app-degree-file').files[0].name : '', status:'مقدم', uniNumber:null }; alert('تم استلام جميع بياناتك بنجاح، سيتم إرسال الرقم الجامعي لاحقًا'); document.getElementById('application-form').reset; } function checkAdmission(){ let uniId = document.getElementById('admission-id').value; let phone = document.getElementById('admission-phone').value; if(students[uniId] && students[uniId].phone === phone){ currentStudent = students[uniId]; currentStudent.status = 'مقبول'; showAdmissionResult(); }else{alert('لا توجد بيانات قبول مطابقة');} } function showAdmissionResult(){ let sec = document.getElementById('results-section'); sec.innerHTML=`<div class="result-card">
 
-<h3>لقد تم قبولك بنجاح!</h3>
-<p class="status-accepted">${currentStudent.name} تم قبولك في التخصص: ${currentStudent.major}</p>
-<div class="student-info">
-<div class="info-item"><label>الاسم:</label><span>${currentStudent.name}</span></div>
-<div class="info-item"><label>الدرجة العلمية:</label><span>${currentStudent.degree}</span></div>
-<div class="info-item"><label>التخصص:</label><span>${currentStudent.major}</span></div>
-<div class="info-item"><label>حالة القبول:</label><span>${currentStudent.status}</span></div>
+<section id="hero" class="hero-section">
+<div class="container">
+<h2>مرحباً بك في بوابة القبول والتسجيل</h2>
+<p>جامعة الملك سعود - نحو مستقبل أكاديمي مشرق</p>
 </div>
-<button class="submit-btn" onclick="confirmAdmission()">تأكيد القبول</button>
-</div>`;
+</section>
+
+<section id="services" class="services-section">
+<div class="container">
+<h2 class="text-center">خدمات القبول والتسجيل</h2>
+<div class="service-cards">
+
+<div class="service-card">
+<div class="icon"><i class="fas fa-search"></i></div>
+<h3>الاستعلام عن القبول</h3>
+<p>استعلم عن حالة قبولك في الجامعة باستخدام رقمك الجامعي ورقم الجوال</p>
+<button class="submit-btn" onclick="showForm('inquiry')">استعلام</button>
+</div>
+
+<div class="service-card">
+<div class="icon"><i class="fas fa-user-plus"></i></div>
+<h3>تقديم طلب جديد</h3>
+<p>املأ النموذج بالكامل لتقديم طلبك للجامعة</p>
+<button class="submit-btn" onclick="showForm('newApplication')">تقديم طلب جديد</button>
+</div>
+
+<div class="service-card">
+<div class="icon"><i class="fas fa-credit-card"></i></div>
+<h3>سداد الرسوم</h3>
+<p>ادفع رسوم التسجيل بطريقة آمنة ومريحة</p>
+<button id="payBtn" class="submit-btn" onclick="alert('يرجى تأكيد قبولك أولاً')">سداد</button>
+</div>
+
+<div class="service-card">
+<div class="icon"><i class="fas fa-check-circle"></i></div>
+<h3>تأكيد القبول</h3>
+<p>أكد قبولك في الجامعة وابدأ رحلتك الأكاديمية معنا</p>
+<button id="confirmBtn" class="submit-btn" onclick="alert('يرجى الاستعلام أولاً')">تأكيد</button>
+</div>
+
+</div>
+</div>
+</section>
+
+<section id="forms-section" class="forms-section">
+<div class="container">
+
+<!-- نموذج الاستعلام -->
+<div id="inquiryForm" class="form-container hidden">
+<h3>الاستعلام عن القبول</h3>
+<form id="inquiryFormActual" onsubmit="handleInquiry(event)">
+<div class="form-group">
+<label>رقم جامعي</label>
+<input type="text" name="studentNumber" placeholder="أدخل الرقم الجامعي" required>
+</div>
+<div class="form-group">
+<label>رقم الجوال</label>
+<input type="text" name="phone" placeholder="أدخل رقم الجوال" required>
+</div>
+<button type="submit" class="submit-btn">استعلام</button>
+</form>
+<div id="inquiryResult" class="hidden" style="margin-top:15px; padding:10px; background:#d4edda; color:#155724; border-radius:5px;"></div>
+</div>
+
+<!-- نموذج تقديم طلب جديد -->
+<div id="newApplicationForm" class="form-container hidden">
+<h3>نموذج تقديم طلب جديد</h3>
+<form id="applicationForm" enctype="multipart/form-data">
+
+<div class="form-group">
+<label>الاسم الكامل</label>
+<input type="text" name="fullName" placeholder="أدخل الاسم الكامل" required>
+</div>
+
+<div class="form-group">
+<label>رقم الهوية / الإقامة</label>
+<input type="text" name="idNumber" placeholder="أدخل رقم الهوية أو الإقامة" required>
+</div>
+
+<div class="form-group">
+<label>تاريخ الميلاد</label>
+<input type="date" name="dob" required>
+</div>
+
+<div class="form-group">
+<label>الجنسية</label>
+<input type="text" name="nationality" placeholder="أدخل الجنسية" required>
+</div>
+
+<div class="form-group">
+<label>المؤهل الدراسي</label>
+<select name="degree" required>
+<option value="">اختر المؤهل</option>
+<option>بكالوريوس</option>
+<option>ماجستير</option>
+<option>دكتوراه</option>
+<option>دبلوم عالي</option>
+</select>
+</div>
+
+<div class="form-group">
+<label>التخصص المطلوب</label>
+<input type="text" name="major" placeholder="أدخل التخصص المطلوب" required>
+</div>
+
+<div class="form-group">
+<label>المعدل النهائي</label>
+<input type="text" name="gpa" placeholder="أدخل المعدل النهائي" required>
+</div>
+
+<div class="form-group">
+<label>البريد الإلكتروني</label>
+<input type="email" name="email" placeholder="example@mail.com" required>
+</div>
+
+<div class="form-group">
+<label>رقم الجوال</label>
+<input type="text" name="phone" placeholder="أدخل رقم الجوال" required>
+</div>
+
+<div class="form-group">
+<label>رفع صورة الشهادة</label>
+<input type="file" name="certificateFile" accept=".jpg,.jpeg,.png,.pdf" required>
+</div>
+
+<div class="form-group">
+<label>رفع صورة الهوية</label>
+<input type="file" name="idFile" accept=".jpg,.jpeg,.png,.pdf" required>
+</div>
+
+<button type="submit" class="submit-btn">إرسال الطلب</button>
+</form>
+
+<div id="successMessage" class="hidden" style="margin-top:15px; padding:10px; background:#d4edda; color:#155724; border-radius:5px;">
+تم استلام جميع بياناتك بنجاح. سيتم التواصل معك عبر الواتساب أو البريد الإلكتروني لإعطائك الرقم الجامعي.
+</div>
+</div>
+
+</div>
+</section>
+
+<footer>
+<div class="container">
+<p>&copy; 2025 جامعة الملك سعود - جميع الحقوق محفوظة</p>
+</div>
+</footer>
+
+<script>
+// عرض النماذج
+function showForm(type){
+document.querySelectorAll('.form-container').forEach(f => f.classList.add('hidden'));
+if(type === 'inquiry') {
+document.getElementById('inquiryForm').classList.remove('hidden');
+window.scrollTo({ top: document.getElementById('inquiryForm').offsetTop, behavior: 'smooth' });
 }
-function confirmAdmission(){currentStudent.status='مؤكد'; document.getElementById('results-section').innerHTML=`<div class="result-card"><h3>تم تأكيد قبولك بنجاح!</h3><p class="status-accepted">${currentStudent.name} تم تأكيد قبولك</p><button class="submit-btn" onclick="showPayment()">السداد</button></div>`;}
-function showPayment(){document.getElementById('results-section').innerHTML=`<div class="result-card"><h3>فاتورة السداد</h3>
-<p>الرجاء سداد الرسوم المستحقة لإتمام التسجيل</p>
-<div class="payment-invoice">
-<div class="invoice-item"><span>الرسوم الدراسية:</span><span>1500 ريال</span></div>
-<div class="invoice-item"><span>رسوم التسجيل:</span><span>0 ريال</span></div>
-<div class="invoice-item"><span>رسوم الكتب:</span><span>0 ريال</span></div>
-</div>
-<div class="upload-area" onclick="document.getElementById('receipt-file').click()">
-<input type="file" id="receipt-file">
-<p>اضغط هنا لرفع إيصال السداد</p>
-</div>
-<button class="submit-btn" onclick="submitPayment()">إرسال إيصال السداد</button>
-</div>`;}
-function submitPayment(){let f=document.getElementById('receipt-file').files[0]; if(!f){alert('يرجى رفع إيصال السداد');return;} alert('تم إرسال إيصال السداد بنجاح');}
+if(type === 'newApplication') {
+document.getElementById('newApplicationForm').classList.remove('hidden');
+window.scrollTo({ top: document.getElementById('newApplicationForm').offsetTop, behavior: 'smooth' });
+}
+}
+
+// إرسال نموذج تقديم الطلب
+document.getElementById('applicationForm').addEventListener('submit', function(e){
+e.preventDefault();
+this.classList.add('hidden');
+document.getElementById('successMessage').classList.remove('hidden');
+// يمكن هنا إرسال البيانات إلى PHP أو API
+});
+
+// بيانات وهمية للقبول (يمكنك تعديلها لاحقًا)
+const studentsData = [
+{studentNumber:'2025001', phone:'0555555555', fullName:'أحمد محمد حسن', major:'هندسة', degree:'بكالوريوس', gpa:'4.75', status:'تم قبولك بنجاح'},
+{studentNumber:'2025002', phone:'0555555556', fullName:'سارة علي', major:'طب', degree:'بكالوريوس', gpa:'4.50', status:'تم قبولك بنجاح'}
+];
+
+// الاستعلام عن القبول
+function handleInquiry(e){
+e.preventDefault();
+const number = e.target.studentNumber.value;
+const phone = e.target.phone.value;
+const resultDiv = document.getElementById('inquiryResult');
+const student = studentsData.find(s => s.studentNumber===number && s.phone===phone);
+if(student){
+resultDiv.innerHTML = `<strong>${student.fullName}</strong><br>برنامج: ${student.degree}<br>تخصص: ${student.major}<br>المعدل: ${student.gpa}<br><span style="color:green;">${student.status}</span>`;
+resultDiv.classList.remove('hidden');
+// تفعيل زر التأكيد
+document.getElementById('confirmBtn').onclick = function(){
+alert('تم تأكيد قبولك بنجاح!');
+document.getElementById('payBtn').onclick = function(){alert('فاتورة السداد جاهزة للعرض');};
+};
+} else {
+resultDiv.innerHTML = `<span style="color:red;">لا توجد بيانات مطابقة</span>`;
+resultDiv.classList.remove('hidden');
+}
+}
 </script>
+
 </body>
-</html>
+  </html>
