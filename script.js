@@ -1,4 +1,4 @@
-// =================== بيانات الطلاب ===================
+// =================== بيانات الطلاب (محاكاة) ===================
 const studentData = {
     "1145181531": {
         name: "أحمد منير توفيق الأيوبي",
@@ -52,10 +52,6 @@ function showInquiryForm() {
     document.getElementById("inquiry-id").value = "";
     document.getElementById("inquiry-phone").value = "";
     scrollToElement("forms-section");
-
-    document.getElementById("inquiry-card").querySelector(".submit-btn").onclick = showInquiryForm;
-    document.getElementById("confirmation-card").querySelector(".submit-btn").onclick = () => alert("يرجى البدء بالاستعلام عن القبول أولاً");
-    document.getElementById("payment-card").querySelector(".submit-btn").onclick = () => alert("يرجى البدء بالاستعلام عن القبول أولاً");
 }
 
 function checkAdmission() {
@@ -96,10 +92,6 @@ function showAdmissionResult() {
     `;
     resultsSection.classList.remove("hidden");
     scrollToElement("results-section");
-
-    document.getElementById("inquiry-card").querySelector(".submit-btn").onclick = () => alert("لقد استعلمت بالفعل عن القبول.");
-    document.getElementById("confirmation-card").querySelector(".submit-btn").onclick = showConfirmationSuccess;
-    document.getElementById("payment-card").querySelector(".submit-btn").onclick = () => alert("يرجى تأكيد القبول أولاً");
 }
 
 // =================== تأكيد القبول ===================
@@ -122,10 +114,6 @@ function showConfirmationSuccess() {
     `;
     resultsSection.classList.remove("hidden");
     scrollToElement("results-section");
-
-    document.getElementById("inquiry-card").querySelector(".submit-btn").onclick = () => alert("لقد استعلمت بالفعل عن القبول.");
-    document.getElementById("confirmation-card").querySelector(".submit-btn").onclick = () => alert("لقد أكدت قبولك بالفعل.");
-    document.getElementById("payment-card").querySelector(".submit-btn").onclick = showPaymentInvoice;
 }
 
 // =================== فاتورة السداد ===================
@@ -160,7 +148,7 @@ function showPaymentInvoice() {
                 <div class="upload-section">
                     <h5>رفع إيصال السداد</h5>
                     <div class="upload-area" onclick="document.getElementById('receipt-upload').click()">
-                        <input type="file" id="receipt-upload" accept=".pdf,.jpg,.png">
+                        <input type="file" id="receipt-upload" accept=".pdf,.jpg,.png" onchange="displayFileName()">
                         <div class="upload-icon">📄</div>
                         <p>اضغط هنا لرفع إيصال السداد</p>
                         <p id="file-name" style="font-size: 14px; color: #555;"></p>
@@ -174,18 +162,12 @@ function showPaymentInvoice() {
     scrollToElement("results-section");
 }
 
-// عرض اسم الملف المرفوع
 function displayFileName() {
     const fileInput = document.getElementById("receipt-upload");
     const fileNameDisplay = document.getElementById("file-name");
-    if (fileInput.files.length > 0) {
-        fileNameDisplay.textContent = `الملف المحدد: ${fileInput.files[0].name}`;
-    } else {
-        fileNameDisplay.textContent = "";
-    }
+    fileNameDisplay.textContent = fileInput.files.length > 0 ? `الملف المحدد: ${fileInput.files[0].name}` : "";
 }
 
-// محاكاة إرسال إيصال السداد
 function submitPayment() {
     const fileInput = document.getElementById("receipt-upload");
     if (!fileInput.files[0]) {
@@ -204,7 +186,7 @@ function submitPayment() {
         .catch(error => console.error("خطأ في الإرسال:", error));
 }
 
-// =================== نموذج تقديم طلب جديد ===================
+// =================== عرض نموذج التقديم ===================
 function showApplicationForm() {
     hideAllForms();
     document.getElementById("forms-section").classList.remove("hidden");
@@ -217,32 +199,27 @@ function showApplicationForm() {
         document.getElementById("forms-section").appendChild(formContainer);
     }
 
-    formContainer.innerHTML = document.getElementById("application-form").innerHTML; // يستخدم نفس النموذج كما هو
+    formContainer.innerHTML = document.getElementById("application-form-template").innerHTML;
     formContainer.classList.remove("hidden");
     scrollToElement("forms-section");
 
     const applicationForm = document.getElementById("applicationForm");
+    const successMessage = document.getElementById("successMessage");
+
     applicationForm.addEventListener("submit", function(e) {
         e.preventDefault();
+        const formData = new FormData(applicationForm);
 
-        const formData = new FormData(this);
-
-        fetch('https://script.google.com/macros/s/AKfycbxglQ_oGCF_ICL56X9dofD56F1mF89vIef6NrN7BObysCTEs5xQVfQ9wGc8N4aWwkG2/exec', {
-            method: 'POST',
+        fetch("https://script.google.com/macros/s/AKfycbxglQ_oGCF_ICL56X9dofD56F1mF89vIef6NrN7BObysCTEs5xQVfQ9wGc8N4aWwkG2/exec", {
+            method: "POST",
             body: formData
         })
-        .then(response => {
-            if(response.ok){
-                document.getElementById("successMessage").classList.remove("hidden");
-                this.reset();
-            } else {
-                alert('حدث خطأ أثناء الإرسال، حاول لاحقاً.');
-            }
+        .then(response => response.text())
+        .then(data => {
+            successMessage.classList.remove("hidden");
+            applicationForm.reset();
         })
-        .catch(error => {
-            console.error('خطأ:', error);
-            alert('فشل الاتصال، تحقق من الإنترنت وحاول مرة أخرى.');
-        });
+        .catch(error => alert("حدث خطأ أثناء إرسال البيانات: " + error));
     });
 }
 
