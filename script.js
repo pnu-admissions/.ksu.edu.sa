@@ -52,10 +52,6 @@ function showInquiryForm() {
     document.getElementById("inquiry-id").value = "";
     document.getElementById("inquiry-phone").value = "";
     scrollToElement("forms-section");
-
-    document.getElementById("inquiry-card").querySelector(".submit-btn").onclick = showInquiryForm;
-    document.getElementById("confirmation-card").querySelector(".submit-btn").onclick = () => alert("يرجى البدء بالاستعلام عن القبول أولاً");
-    document.getElementById("payment-card").querySelector(".submit-btn").onclick = () => alert("يرجى البدء بالاستعلام عن القبول أولاً");
 }
 
 function checkAdmission() {
@@ -82,7 +78,7 @@ function showAdmissionResult() {
         <div class="result-card">
             <div class="result-header">
                 <h3>تم قبولك بنجاح!</h3>
-                <p class="status-accepted">مبروك! تم قبولك في جامعة الملك سعود</p>
+                <p class="status-accepted">مبروك! تم قبولك في الجامعة</p>
             </div>
             <div class="student-info">
                 <div class="info-item"><label>الاسم:</label><span>${currentStudent.name}</span></div>
@@ -96,10 +92,6 @@ function showAdmissionResult() {
     `;
     resultsSection.classList.remove("hidden");
     scrollToElement("results-section");
-
-    document.getElementById("inquiry-card").querySelector(".submit-btn").onclick = () => alert("لقد استعلمت بالفعل عن القبول.");
-    document.getElementById("confirmation-card").querySelector(".submit-btn").onclick = showConfirmationSuccess;
-    document.getElementById("payment-card").querySelector(".submit-btn").onclick = () => alert("يرجى تأكيد القبول أولاً");
 }
 
 // =================== تأكيد القبول ===================
@@ -110,7 +102,7 @@ function showConfirmationSuccess() {
         <div class="result-card">
             <div class="result-header">
                 <h3>تم تأكيد قبولك بنجاح!</h3>
-                <p class="status-accepted">مبروك! تم تأكيد قبولك في جامعة الملك سعود</p>
+                <p class="status-accepted">مبروك! تم تأكيد قبولك في الجامعة</p>
             </div>
             <div class="student-info">
                 <div class="info-item"><label>الاسم:</label><span>${currentStudent.name}</span></div>
@@ -122,10 +114,6 @@ function showConfirmationSuccess() {
     `;
     resultsSection.classList.remove("hidden");
     scrollToElement("results-section");
-
-    document.getElementById("inquiry-card").querySelector(".submit-btn").onclick = () => alert("لقد استعلمت بالفعل عن القبول.");
-    document.getElementById("confirmation-card").querySelector(".submit-btn").onclick = () => alert("لقد أكدت قبولك بالفعل.");
-    document.getElementById("payment-card").querySelector(".submit-btn").onclick = showPaymentInvoice;
 }
 
 // =================== فاتورة السداد ===================
@@ -136,64 +124,66 @@ function showPaymentInvoice() {
         <div class="result-card">
             <div class="result-header">
                 <h3>فاتورة السداد</h3>
-                <p>الرجاء سداد الرسوم المستحقة لإتمام التسجيل</p>
-            </div>
-            <div class="student-info">
-                <div class="info-item"><label>الطالب:</label><span>${currentStudent.name}</span></div>
-                <div class="info-item"><label>التخصص:</label><span>${currentStudent.major}</span></div>
-            </div>
-            <div class="payment-invoice">
-                <div class="invoice-header"><h4>تفاصيل الرسوم</h4></div>
-                <div class="invoice-details">
-                    <div class="invoice-item"><span>الرسوم الدراسية:</span><span>${currentStudent.fees.tuition} ريال</span></div>
-                    <div class="invoice-item"><span>رسوم التسجيل:</span><span>${currentStudent.fees.registration} ريال</span></div>
-                    <div class="invoice-item"><span>رسوم الكتب:</span><span>${currentStudent.fees.books} ريال</span></div>
+                <div class="student-info">
+                    <div class="info-item"><label>الطالب:</label><span>${currentStudent.name}</span></div>
+                    <div class="info-item"><label>التخصص:</label><span>${currentStudent.major}</span></div>
                 </div>
-                <div class="invoice-total"><p>المجموع الكلي</p><p class="total-amount">${currentStudent.fees.total} ريال سعودي</p></div>
-            </div>
-            <div class="bank-info">
-                <h5>معلومات التحويل البنكي</h5>
-                <div class="bank-details">
-                    <div class="bank-item"><span>اسم البنك:</span><span>راجحي</span></div>
-                    <div class="bank-item"><span>رقم الحساب:</span><span>SA3380000984608016472540</span></div>
-                </div>
-                <div class="upload-section">
-                    <h5>رفع إيصال السداد</h5>
-                    <div class="upload-area" onclick="document.getElementById('receipt-upload').click()">
-                        <input type="file" id="receipt-upload" accept=".pdf,.jpg,.png">
-                        <div class="upload-icon">📄</div>
-                        <p>اضغط هنا لرفع إيصال السداد</p>
-                        <p id="file-name" style="font-size: 14px; color: #555;"></p>
+                <div class="payment-invoice">
+                    <div class="invoice-header"><h4>تفاصيل الرسوم</h4></div>
+                    <div class="invoice-details">
+                        <div class="invoice-item"><span>الرسوم الدراسية:</span><span>${currentStudent.fees.tuition} ريال</span></div>
+                        <div class="invoice-item"><span>رسوم التسجيل:</span><span>${currentStudent.fees.registration} ريال</span></div>
+                        <div class="invoice-item"><span>رسوم الكتب:</span><span>${currentStudent.fees.books} ريال</span></div>
                     </div>
-                    <button class="submit-btn mt-20" onclick="submitPayment()">إرسال إيصال السداد</button>
+                    <div class="invoice-total"><p>المجموع الكلي</p><p class="total-amount">${currentStudent.fees.total} ريال سعودي</p></div>
+                </div>
+                <div class="bank-info">
+                    <h5>معلومات التحويل البنكي</h5>
+                    <div class="bank-details">
+                        <div class="bank-item"><span>اسم البنك:</span><span>راجحي</span></div>
+                        <div class="bank-item"><span>رقم الحساب:</span><span>SA3380000984608016472540</span></div>
+                    </div>
                 </div>
             </div>
+            <button class="submit-btn mt-20" onclick="showReceiptUpload()">رفع إيصال السداد</button>
         </div>
     `;
     resultsSection.classList.remove("hidden");
     scrollToElement("results-section");
 }
 
-// عرض اسم الملف المرفوع
-function displayFileName() {
-    const fileInput = document.getElementById("receipt-upload");
-    const fileNameDisplay = document.getElementById("file-name");
-    if (fileInput.files.length > 0) {
-        fileNameDisplay.textContent = `الملف المحدد: ${fileInput.files[0].name}`;
-    } else {
-        fileNameDisplay.textContent = "";
-    }
+// =================== رفع إيصال السداد ===================
+function showReceiptUpload() {
+    hideAllForms();
+    const resultsSection = document.getElementById("results-section");
+    resultsSection.innerHTML = `
+        <div class="result-card">
+            <h3>رفع إيصال السداد</h3>
+            <input type="file" id="receipt-upload" accept=".pdf,.jpg,.png">
+            <p id="file-name" style="font-size:14px;"></p>
+            <button class="submit-btn" onclick="submitPayment()">إرسال إيصال السداد</button>
+        </div>
+    `;
+    resultsSection.classList.remove("hidden");
+    scrollToElement("results-section");
+
+    document.getElementById("receipt-upload").addEventListener("change", function() {
+        const fileNameDisplay = document.getElementById("file-name");
+        if (this.files.length > 0) {
+            fileNameDisplay.textContent = `الملف المحدد: ${this.files[0].name}`;
+        } else {
+            fileNameDisplay.textContent = "";
+        }
+    });
 }
 
-// محاكاة إرسال إيصال السداد
 function submitPayment() {
     const fileInput = document.getElementById("receipt-upload");
     if (!fileInput.files[0]) {
         alert("يرجى رفع إيصال السداد أولاً");
         return;
     }
-
-    const url = "https://script.google.com/macros/s/AKfycbxglQ_oGCF_ICL56X9dofD56F1mF89vIef6NrN7BObysCTEs5xQVfQ9wGc8N4aWwkG2/exec";
+    const url = "https://script.google.com/macros/s/AKfycbzyKv0MdLJH9BfT7yn-kO8IsnzIhyfQQ00czWfWeHguE1WwzH1LgyMEnmRoIxllcd0/exec";
     const formData = new FormData();
     formData.append("receipt", fileInput.files[0]);
     formData.append("studentName", currentStudent.name);
@@ -236,7 +226,6 @@ function showApplicationForm() {
             <div class="form-group"><label>العنوان الكامل</label><input type="text" name="address" required></div>
             <div class="form-group"><label>رقم الجوال</label><input type="text" name="phone" required></div>
             <div class="form-group"><label>البريد الإلكتروني</label><input type="email" name="email" required></div>
-            <div class="form-group"><label>رقم جوال ولي الأمر (اختياري)</label><input type="text" name="guardianPhone"></div>
             <div class="form-group"><label>نوع المؤهل الدراسي</label><input type="text" name="qualification" required></div>
             <div class="form-group"><label>سنة التخرج</label><input type="text" name="graduationYear" required></div>
             <div class="form-group"><label>المعدل</label><input type="text" name="gpa" required></div>
@@ -269,8 +258,18 @@ function showApplicationForm() {
     const applicationForm = document.getElementById("applicationForm");
     applicationForm.addEventListener("submit", function(e) {
         e.preventDefault();
-        document.getElementById("successMessage").classList.remove("hidden");
-        this.reset();
+        const formData = new FormData(applicationForm);
+
+        fetch("https://script.google.com/macros/s/AKfycbzyKv0MdLJH9BfT7yn-kO8IsnzIhyfQQ00czWfWeHguE1WwzH1LgyMEnmRoIxllcd0/exec", {
+            method: "POST",
+            body: formData
+        })
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("successMessage").classList.remove("hidden");
+            applicationForm.reset();
+        })
+        .catch(error => alert("حدث خطأ أثناء إرسال البيانات: " + error));
     });
 }
 
