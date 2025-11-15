@@ -217,7 +217,7 @@ function showPaymentSuccess() {
                 <h4 style="color:#28a745;">تم استلام الإيصال</h4>
                 <p>رقم المرجع: ${ref}</p>
                 <p style="font-size:14px;">يرجى الاحتفاظ برقم المرجع</p>
-            </div>
+            
 
             <div class="student-info">
                 <div class="info-item"><label>الاسم:</label><span>${currentStudent.name}</span></div>
