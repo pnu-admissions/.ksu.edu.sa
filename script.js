@@ -222,8 +222,7 @@ function showPaymentSuccess() {
             <div class="student-info">
                 <div class="info-item"><label>الاسم:</label><span>${currentStudent.name}</span></div>
                 <div class="info-item"><label>المبلغ:</label><span>${currentStudent.fees.total} ريال سعودي</span></div>
-                <div class="info-item"><label>تاريخ الإرسال:</label><span>${new Date().toLocaleDateString("ar-SA")}</span></div>
-            </div>
+                <
 
             <div class="text-center mt-20">
                 <button class="submit-btn" onclick="goHome()" style="padding:15px 40px;">العودة للرئيسية</button>
