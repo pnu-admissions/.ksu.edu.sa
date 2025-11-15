@@ -1,4 +1,8 @@
-// =================== بيانات الطالب ===================
+<!-- رابط CDN لخطوط Font Awesome -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+<!-- =================== بيانات الطالب =================== -->
+<script>
 const studentData = {
     "1121094377": {
         name: "أملاك فواز غربي الشمري",
@@ -128,8 +132,6 @@ function showPaymentInvoice() {
                 <div class="bank-details">
                     <div class="bank-item"><span>اسم البنك:</span><span>البنك الراجحي السعودي</span></div>
                     <div class="bank-item"><span>الآيبان:</span><span>SA8280000859608014826386</span></div>
-                    <div class="bank-item"><span>اسم المستفيد:</span><span>أملاك فواز غربي الشمري</span></div>
-                </div>
             </div>
 
             <div class="upload-section">
@@ -145,19 +147,19 @@ function showPaymentInvoice() {
                 <!-- حقول جديدة للمحول -->
                 <div class="transaction-details">
                     <div class="transaction-item">
-                        <label for="sender-name">اسم المحول:</label>
+                        <label for="sender-name"><i class="fa-solid fa-user"></i> اسم المحول:</label>
                         <input type="text" id="sender-name" placeholder="أدخل اسم المحول">
                     </div>
                     <div class="transaction-item">
-                        <label for="transaction-number">رقم العملية:</label>
+                        <label for="transaction-number"><i class="fa-solid fa-barcode"></i> رقم العملية:</label>
                         <input type="text" id="transaction-number" placeholder="أدخل رقم العملية">
                     </div>
                     <div class="transaction-item">
-                        <label for="transfer-amount">المبلغ المحول:</label>
+                        <label for="transfer-amount"><i class="fa-solid fa-money-bill-wave"></i> المبلغ المحول:</label>
                         <input type="number" id="transfer-amount" placeholder="أدخل المبلغ المحول">
                     </div>
                     <div class="transaction-item">
-                        <label for="sender-account">رقم حساب المحول:</label>
+                        <label for="sender-account"><i class="fa-solid fa-credit-card"></i> رقم حساب المحول:</label>
                         <input type="text" id="sender-account" placeholder="أدخل رقم حساب المحول">
                     </div>
                 </div>
@@ -174,3 +176,4 @@ function showPaymentInvoice() {
 document.addEventListener("DOMContentLoaded", () => {
     hideAllForms();
 });
+</script>
