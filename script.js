@@ -17,7 +17,7 @@ const studentData = {
 
     // الطالبة أملاك — البيانات الحقيقية كما طلبت
     "1121094377": {
-        name: "أملاك فواز مالك",
+        name: "أملاك فواز غربي الشمري",
         degree: "بكالوريوس",
         major: "قانون تجاري",
         status: "مقبولة",
@@ -161,7 +161,7 @@ function showPaymentInvoice() {
             </div>
 
             <div class="bank-info">
-                <h5>معلومات التحويل البنكي</h5>
+                <h5> البنك الراجحي: معلومات التحويل البنكي</h5>
                 <div class="bank-details">
                     <div class="bank-item">
                         <span>الآيبان:</span>
