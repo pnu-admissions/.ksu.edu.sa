@@ -21,7 +21,7 @@ const studentData = {
     "1121094377": {
         name: "أملاك فواز غربي الشمري",
         degree: "بكالوريوس",
-        major: "قانون عام",
+        major: "قانون تجاري",
         status: "مقبول",
         admissionDate: "2025/09/01",
         phone: "0501733515",
@@ -43,7 +43,7 @@ function scrollToElement(id) {
     document.getElementById(id).scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
-// =================== الاستعلام عن القبول ===================
+// =================== استعلام القبول ===================
 function showInquiryForm() {
     hideAllForms();
     document.getElementById("forms-section").classList.remove("hidden");
@@ -51,10 +51,6 @@ function showInquiryForm() {
     document.getElementById("inquiry-id").value = "";
     document.getElementById("inquiry-phone").value = "";
     scrollToElement("forms-section");
-
-    document.getElementById("inquiry-card").querySelector(".submit-btn").onclick = showInquiryForm;
-    document.getElementById("confirmation-card").querySelector(".submit-btn").onclick = () => alert("يرجى البدء بالاستعلام عن القبول أولاً");
-    document.getElementById("payment-card").querySelector(".submit-btn").onclick = () => alert("يرجى البدء بالاستعلام عن القبول أولاً");
 }
 
 function checkAdmission() {
@@ -90,10 +86,6 @@ function showAdmissionResult() {
     `;
     resultsSection.classList.remove("hidden");
     scrollToElement("results-section");
-
-    document.getElementById("inquiry-card").querySelector(".submit-btn").onclick = () => alert("لقد استعلمت بالفعل عن القبول.");
-    document.getElementById("confirmation-card").querySelector(".submit-btn").onclick = showConfirmationSuccess;
-    document.getElementById("payment-card").querySelector(".submit-btn").onclick = () => alert("يرجى تأكيد القبول أولاً");
 }
 
 // =================== تأكيد القبول ===================
@@ -104,6 +96,11 @@ function showConfirmationSuccess() {
         <div class="result-card">
             <h3>تم تأكيد قبولك بنجاح!</h3>
             <p>مبروك! تم تأكيد قبولك في جامعة الملك سعود</p>
+            <div class="student-info">
+                <div class="info-item"><label>الاسم:</label><span>${currentStudent.name}</span></div>
+                <div class="info-item"><label>الدرجة العلمية:</label><span>${currentStudent.degree}</span></div>
+                <div class="info-item"><label>التخصص:</label><span>${currentStudent.major}</span></div>
+            </div>
             <button class="submit-btn" onclick="showPaymentInvoice('${currentStudent.name}')">السداد</button>
         </div>
     `;
@@ -111,7 +108,7 @@ function showConfirmationSuccess() {
     scrollToElement("results-section");
 }
 
-// =================== فاتورة السداد ===================
+// =================== السداد ===================
 function showPaymentInvoice(studentName) {
     hideAllForms();
     const resultsSection = document.getElementById("results-section");
