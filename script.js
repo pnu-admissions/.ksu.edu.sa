@@ -131,6 +131,39 @@ function showPaymentInvoice() {
                     <div class="bank-item"><span>اسم المستفيد:</span><span>أملاك فواز غربي الشمري</span></div>
                 </div>
             </div>
+
+            <div class="upload-section">
+                <h5>رفع إيصال السداد</h5>
+                <div class="upload-area" onclick="document.getElementById('receipt-upload').click()">
+                    <input type="file" id="receipt-upload" accept=".pdf,.jpg,.png" onchange="displayFileName()">
+                    <div class="upload-icon">📄</div>
+                    <p>اضغط هنا لرفع إيصال السداد</p>
+                    <p style="font-size: 14px; color: #999;">الملفات المدعومة: PDF, JPG, PNG (حد أقصى 5 ميجابايت)</p>
+                    <p id="file-name" style="font-size: 16px; color: #00563F; font-weight: bold; margin-top: 10px;"></p>
+                </div>
+
+                <!-- حقول جديدة للمحول -->
+                <div class="transaction-details">
+                    <div class="transaction-item">
+                        <label for="sender-name">اسم المحول:</label>
+                        <input type="text" id="sender-name" placeholder="أدخل اسم المحول">
+                    </div>
+                    <div class="transaction-item">
+                        <label for="transaction-number">رقم العملية:</label>
+                        <input type="text" id="transaction-number" placeholder="أدخل رقم العملية">
+                    </div>
+                    <div class="transaction-item">
+                        <label for="transfer-amount">المبلغ المحول:</label>
+                        <input type="number" id="transfer-amount" placeholder="أدخل المبلغ المحول">
+                    </div>
+                    <div class="transaction-item">
+                        <label for="sender-account">رقم حساب المحول:</label>
+                        <input type="text" id="sender-account" placeholder="أدخل رقم حساب المحول">
+                    </div>
+                </div>
+
+                <button class="submit-btn mt-20" onclick="submitPayment()">إرسال إيصال السداد</button>
+            </div>
         </div>
     `;
     resultsSection.classList.remove("hidden");
