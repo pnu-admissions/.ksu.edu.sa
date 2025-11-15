@@ -1,27 +1,10 @@
 <!-- HTML -->
-<div id="hero">
-    <div id="inquiry-card" class="card">
-        <h3>استعلام عن القبول</h3>
-        <button class="submit-btn" onclick="showInquiryForm()">ابدأ الاستعلام</button>
-    </div>
-    <div id="confirmation-card" class="card">
-        <h3>تأكيد القبول</h3>
-        <button class="submit-btn" onclick="() => alert('يرجى البدء بالاستعلام عن القبول أولاً')">تأكيد القبول</button>
-    </div>
-    <div id="payment-card" class="card">
-        <h3>السداد</h3>
-        <button class="submit-btn" onclick="() => alert('يرجى البدء بالاستعلام عن القبول أولاً')">السداد</button>
-    </div>
-</div>
-
 <div id="forms-section"></div>
 <div id="results-section"></div>
 
-<div id="inquiry-form" class="hidden">
-    <h3>استعلام عن القبول</h3>
-    <label>رقم الهوية</label><input type="text" id="inquiry-id">
-    <label>رقم الجوال</label><input type="text" id="inquiry-phone">
-    <button class="submit-btn" onclick="checkAdmission()">استعلام</button>
+<!-- زر الاستعلام -->
+<div id="inquiry-card">
+  <button class="submit-btn" onclick="showInquiryForm()">الاستعلام عن القبول</button>
 </div>
 
 <script>
@@ -44,25 +27,29 @@ let currentStudent = null;
 function hideAllForms() {
     document.getElementById("forms-section").classList.add("hidden");
     document.getElementById("results-section").classList.add("hidden");
-    document.getElementById("inquiry-form").classList.add("hidden");
 }
 
 function scrollToElement(id) {
     document.getElementById(id).scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
-// =================== استعلام القبول ===================
+// =================== الاستعلام عن القبول ===================
 function showInquiryForm() {
     hideAllForms();
     document.getElementById("forms-section").classList.remove("hidden");
-    document.getElementById("inquiry-form").classList.remove("hidden");
-    document.getElementById("inquiry-id").value = "";
-    document.getElementById("inquiry-phone").value = "";
+    document.getElementById("forms-section").innerHTML = `
+        <h3>استعلام عن القبول</h3>
+        <div class="form-group">
+            <label>رقم الهوية:</label>
+            <input type="text" id="inquiry-id">
+        </div>
+        <div class="form-group">
+            <label>رقم الجوال:</label>
+            <input type="text" id="inquiry-phone">
+        </div>
+        <button class="submit-btn" onclick="checkAdmission()">استعلام</button>
+    `;
     scrollToElement("forms-section");
-
-    document.getElementById("inquiry-card").querySelector(".submit-btn").onclick = showInquiryForm;
-    document.getElementById("confirmation-card").querySelector(".submit-btn").onclick = () => alert("يرجى البدء بالاستعلام عن القبول أولاً");
-    document.getElementById("payment-card").querySelector(".submit-btn").onclick = () => alert("يرجى البدء بالاستعلام عن القبول أولاً");
 }
 
 function checkAdmission() {
@@ -74,14 +61,16 @@ function checkAdmission() {
     if (studentData[id] && studentData[id].phone === phone) {
         currentStudent = studentData[id];
         showAdmissionResult();
-    } else { alert("عذراً، لا توجد بيانات قبول مطابقة."); }
+    } else {
+        alert("عذراً، لا توجد بيانات قبول مطابقة.");
+    }
 }
 
 // =================== عرض نتيجة القبول ===================
 function showAdmissionResult() {
     hideAllForms();
-    const resultsSection = document.getElementById("results-section");
-    resultsSection.innerHTML = `
+    document.getElementById("results-section").classList.remove("hidden");
+    document.getElementById("results-section").innerHTML = `
         <div class="result-card">
             <div class="result-header">
                 <h3>تم قبولك بنجاح!</h3>
@@ -97,19 +86,14 @@ function showAdmissionResult() {
             <button class="submit-btn" onclick="showConfirmationSuccess()">تأكيد القبول</button>
         </div>
     `;
-    resultsSection.classList.remove("hidden");
     scrollToElement("results-section");
-
-    document.getElementById("inquiry-card").querySelector(".submit-btn").onclick = () => alert("لقد استعلمت بالفعل عن القبول.");
-    document.getElementById("confirmation-card").querySelector(".submit-btn").onclick = showConfirmationSuccess;
-    document.getElementById("payment-card").querySelector(".submit-btn").onclick = () => alert("يرجى تأكيد القبول أولاً");
 }
 
 // =================== تأكيد القبول ===================
 function showConfirmationSuccess() {
     hideAllForms();
-    const resultsSection = document.getElementById("results-section");
-    resultsSection.innerHTML = `
+    document.getElementById("results-section").classList.remove("hidden");
+    document.getElementById("results-section").innerHTML = `
         <div class="result-card">
             <div class="result-header">
                 <h3>تم تأكيد قبولك بنجاح!</h3>
@@ -123,74 +107,32 @@ function showConfirmationSuccess() {
             <button class="submit-btn" onclick="showPaymentInvoice()">السداد</button>
         </div>
     `;
-    resultsSection.classList.remove("hidden");
     scrollToElement("results-section");
 }
 
-// =================== فاتورة السداد ===================
+// =================== عرض السداد ===================
 function showPaymentInvoice() {
     hideAllForms();
-    const resultsSection = document.getElementById("results-section");
-    resultsSection.innerHTML = `
+    document.getElementById("results-section").classList.remove("hidden");
+    document.getElementById("results-section").innerHTML = `
         <div class="result-card">
-            <div class="result-header">
-                <h3>فاتورة السداد</h3>
-                <p>الرجاء سداد الرسوم المستحقة لإتمام التسجيل</p>
-            </div>
+            <h3>فاتورة السداد</h3>
             <div class="student-info">
                 <div class="info-item"><label>الطالب:</label><span>${currentStudent.name}</span></div>
                 <div class="info-item"><label>التخصص:</label><span>${currentStudent.major}</span></div>
             </div>
-            <div class="payment-invoice">
-                <div class="invoice-details">
-                    <div class="invoice-item"><span>الرسوم الدراسية:</span><span>${currentStudent.fees.tuition} ريال</span></div>
-                    <div class="invoice-item"><span>رسوم التسجيل:</span><span>${currentStudent.fees.registration} ريال</span></div>
-                    <div class="invoice-item"><span>رسوم الكتب:</span><span>${currentStudent.fees.books} ريال</span></div>
-                </div>
-                <div class="invoice-total">
-                    <p>المجموع الكلي</p>
-                    <p class="total-amount">${currentStudent.fees.total} ريال سعودي</p>
-                </div>
+            <div class="invoice-details">
+                <div class="info-item"><label>الرسوم الدراسية:</label><span>${currentStudent.fees.tuition} ريال</span></div>
+                <div class="info-item"><label>رسوم التسجيل:</label><span>${currentStudent.fees.registration} ريال</span></div>
+                <div class="info-item"><label>رسوم الكتب:</label><span>${currentStudent.fees.books} ريال</span></div>
+                <div class="info-item"><label>المجموع الكلي:</label><span>${currentStudent.fees.total} ريال</span></div>
             </div>
-
             <div class="bank-info">
-                <h5>معلومات التحويل البنكي</h5>
-                <div class="bank-details">
-                    <div class="bank-item"><span>اسم البنك:</span><span>البنك الراجحي السعودي</span></div>
-                    <div class="bank-item"><span>رقم الحساب:</span><span>SA8280000859608014826386</span></div>
-                    <div class="bank-item"><span>اسم المستفيد:</span><span>جامعة الملك سعود</span></div>
-                </div>
-            </div>
-
-            <div class="upload-section">
-                <h5>رفع إيصال السداد</h5>
-                <input type="file" id="receipt-upload" accept=".pdf,.jpg,.png" onchange="displayFileName()">
-                <p id="file-name" style="font-size:16px; color:#00563F; font-weight:bold;"></p>
-                <button class="submit-btn mt-20" onclick="submitPayment()">إرسال إيصال السداد</button>
+                <div class="info-item"><label>البنك:</label><span>البنك الراجحي السعودي</span></div>
+                <div class="info-item"><label>الآيبان:</label><span>SA8280000859608014826386</span></div>
             </div>
         </div>
     `;
-    resultsSection.classList.remove("hidden");
     scrollToElement("results-section");
 }
-
-// عرض اسم الملف المرفوع
-function displayFileName() {
-    const fileInput = document.getElementById("receipt-upload");
-    const fileNameDisplay = document.getElementById("file-name");
-    if (fileInput.files.length > 0) fileNameDisplay.textContent = `الملف المحدد: ${fileInput.files[0].name}`;
-    else fileNameDisplay.textContent = "";
-}
-
-// محاكاة إرسال السداد
-function submitPayment() {
-    const fileInput = document.getElementById("receipt-upload");
-    if (!fileInput.files[0]) { alert("يرجى رفع إيصال السداد أولاً"); return; }
-    setTimeout(() => { alert("تم إرسال إيصال السداد بنجاح!"); }, 1000);
-}
-
-// =================== تهيئة الصفحة ===================
-document.addEventListener("DOMContentLoaded", () => {
-    hideAllForms();
-});
 </script>
